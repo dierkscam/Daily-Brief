@@ -3,31 +3,39 @@
   "psychology": [
    "Confirmation Bias",
    "Loss Aversion",
-   "Anchoring Bias"
+   "Anchoring Bias",
+   "Sunk Cost Fallacy"
   ],
   "vocab": [
    "Equanimity",
    "Salient",
-   "Cogent"
+   "Cogent",
+   "Pragmatic"
   ],
   "finance": [
    "Compound Growth",
    "Nominal vs. Real Returns",
-   "Diversification and Correlation"
+   "Diversification and Correlation",
+   "Risk and Return"
   ],
   "business": [
    "Value Proposition",
    "Customer Segmentation",
-   "Unit Economics"
+   "Unit Economics",
+   "Gross Margin"
   ],
   "mental_model": [
    "Second-Order Thinking",
    "Inversion",
-   "Circle of Competence"
+   "Circle of Competence",
+   "Margin of Safety"
+  ],
+  "sales": [
+   "Open-Ended Discovery Questions"
   ]
  },
  "last_vocab": {
-  "word": "Cogent",
-  "def": "Clear, logical, and convincing; presenting an argument in a way that is hard to dismiss."
+  "word": "Pragmatic",
+  "def": "Dealing with things in a practical, realistic way rather than relying on theory or ideals."
  }
 }
