@@ -1,0 +1,47 @@
+name: Daily brief
+
+on:
+  schedule:
+    - cron: "0 11 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Build the brief
+        run: python generate.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+
+      - name: Publish
+        run: |
+          git config user.name "daily-brief-bot"
+          git config user.email "daily-brief-bot@users.noreply.github.com"
+          git add docs data
+          git diff --cached --quiet || git commit -m "Brief for $(date -u +%F)"
+          git push
+
+      - name: Send phone notification
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+        run: |
+          [ -n "$NTFY_TOPIC" ] || exit 0
+          sleep 60
+          curl -s -H "Title: $(jq -r .title docs/summary.json)" \
+                  -H "Click: $(jq -r .url docs/summary.json)" \
+                  -H "Tags: chart_with_upwards_trend" \
+                  -d "$(jq -r .body docs/summary.json)" \
+                  "https://ntfy.sh/$NTFY_TOPIC"
