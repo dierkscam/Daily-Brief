@@ -2,27 +2,32 @@
  "recent": {
   "psychology": [
    "Confirmation Bias",
-   "Loss Aversion"
+   "Loss Aversion",
+   "Anchoring Bias"
   ],
   "vocab": [
    "Equanimity",
-   "Salient"
+   "Salient",
+   "Cogent"
   ],
   "finance": [
    "Compound Growth",
-   "Nominal vs. Real Returns"
+   "Nominal vs. Real Returns",
+   "Diversification and Correlation"
   ],
   "business": [
    "Value Proposition",
-   "Customer Segmentation"
+   "Customer Segmentation",
+   "Unit Economics"
   ],
   "mental_model": [
    "Second-Order Thinking",
-   "Inversion"
+   "Inversion",
+   "Circle of Competence"
   ]
  },
  "last_vocab": {
-  "word": "Salient",
-  "def": "Most noticeable or important; standing out from the rest."
+  "word": "Cogent",
+  "def": "Clear, logical, and convincing; presenting an argument in a way that is hard to dismiss."
  }
 }
