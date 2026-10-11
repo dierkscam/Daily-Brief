@@ -59,13 +59,35 @@ p{margin:0 0 10px}
 button{font:600 14px Figtree,system-ui,sans-serif;color:var(--bg);background:var(--acc);border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
 [hidden]{display:none!important}
 textarea{width:100%;margin-top:6px;font:inherit;color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:10px;resize:vertical}
+.hd{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px}
+.ghost{background:transparent;color:var(--acc);border:1px solid var(--acc);padding:4px 10px;font-size:13px}
+.erow{display:flex;gap:8px;align-items:center;margin:8px 0}
+.erow input[type=text],.erow input:not([type]){flex:1;min-width:0;font:inherit;font-size:16px;color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:8px}
+.erow input[type=range]{flex:1;accent-color:var(--acc)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:12px 0}
+.facts div{background:var(--soft);border-radius:10px;padding:8px 10px}
+.facts span{display:block;font-size:12px;color:var(--mut)}
+.cflag{height:44px;border:1px solid var(--line);border-radius:6px;vertical-align:middle;margin-right:10px}
+.maps{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin:14px 0}
+.maps figure{margin:0}
+.maps figcaption{font-size:13px;color:var(--mut);margin-top:6px}
+.maps svg{width:100%;height:auto;display:block;border-radius:10px}
+.sea{fill:var(--soft)}.land{fill:var(--line);stroke:var(--card);stroke-width:.4}
+.hl{fill:var(--acc);stroke:var(--card);stroke-width:.5}
+.fmr{fill:color-mix(in srgb,var(--acc) 45%,var(--line));stroke:var(--card);stroke-width:.4}
+.ring{fill:none;stroke:var(--acc);stroke-width:2}
+.lbl{font:11px Figtree,system-ui,sans-serif;fill:var(--ink);paint-order:stroke;stroke:var(--card);stroke-width:3px;text-anchor:middle}
+.lbl.me{font-weight:700;font-size:12px}
+.tl{display:grid;grid-template-columns:64px 1fr;gap:4px 10px;margin:8px 0}
+.tl b{color:var(--acc)}
+ul.clean{margin:6px 0 10px;padding-left:20px}
 .foot{margin-top:36px;font-size:13px;color:var(--mut)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 <nav aria-label="Sections">
-<a href="#markets">Markets</a><a href="#today">Today</a><a href="#news">News</a><a href="#learn">Learn</a><a href="#grow">Grow</a><a href="#review">Review</a>
+<a href="#markets">Markets</a><a href="#today">Today</a><a href="#news">News</a><a href="#learn">Learn</a><a href="#country">Country</a><a href="#grow">Grow</a><a href="#review">Review</a>
 </nav>
 <main class="wrap">
 <header>
@@ -90,11 +112,11 @@ textarea{width:100%;margin-top:6px;font:inherit;color:var(--ink);background:var(
 
 <section id="today">
 <h2>Today</h2>
-<div class="card" id="focusCard" style="margin-bottom:12px" hidden><span class="tag">One priority</span><p style="font-size:18px;margin:0" id="focus"></p><p class="note" id="goalLink" style="margin-bottom:0"></p></div>
+<div class="card" id="focusCard" style="margin-bottom:12px" hidden><span class="tag">Next up</span><p style="font-size:18px;margin:0" id="focus"></p><p class="note" id="goalLink" style="margin-bottom:0"></p></div>
 <div class="card" id="wxCard" style="margin-bottom:12px" hidden><span class="tag">Weather</span><p style="margin:0" id="wx"></p></div>
 <div class="grid g2">
-<div class="card"><h3>To do</h3><div id="tasks"></div><p class="note">Tap to check off. Edit your list in config.json.</p></div>
-<div class="card"><h3>Goals</h3><div id="goals" style="margin-top:10px"></div></div>
+<div class="card"><div class="hd"><h3>To do</h3><button class="ghost" id="eT">Edit</button></div><div id="tasks"></div><p class="note">Tap to check off. Edits save on this device.</p></div>
+<div class="card"><div class="hd"><h3>Goals</h3><button class="ghost" id="eG">Edit</button></div><div id="goals" style="margin-top:10px"></div></div>
 </div>
 </section>
 
@@ -105,18 +127,24 @@ textarea{width:100%;margin-top:6px;font:inherit;color:var(--ink);background:var(
 </section>
 
 <section id="learn"><h2>Learn something today</h2><div class="grid" id="learnGrid"></div></section>
-<section id="grow"><h2>Finance and business</h2><div class="grid g2" id="growGrid"></div></section>
+<section id="country"><h2>Country of the day</h2><div class="card" id="countryCard"></div></section>
+<section id="grow"><h2>Finance, business, and sales</h2><div class="grid g2" id="growGrid"></div></section>
 
 <section id="review">
 <h2>Habits and review</h2>
 <div class="grid g2">
-<div class="card"><h3>Daily habits</h3><div id="habits"></div></div>
-<div class="card"><h3>Evening review</h3><p class="sub">What went well, what you learned, and tomorrow's one priority.</p><textarea id="rev" rows="5" placeholder="Write a few lines"></textarea></div>
+<div class="card"><div class="hd"><h3>Daily habits</h3><button class="ghost" id="eH">Edit</button></div><div id="habits"></div></div>
+<div class="card"><h3>Evening review</h3><p class="sub">What went well, what you learned, and tomorrow's one priority.</p><textarea id="rev" rows="5" placeholder="Write a few lines"></textarea>
+<p class="note" id="saved">Saves automatically on this device.</p>
+<details><summary>Past reviews</summary><div id="past" style="margin-top:8px"></div></details>
+<div class="erow"><button id="shareRev">Share or copy all</button></div></div>
 </div>
 </section>
 
 <p class="foot" id="foot"></p>
 </main>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
 <script>
 const D=__DATA__;
 const $=id=>document.getElementById(id);
@@ -151,17 +179,68 @@ if(st.length){
 if(D.earnings&&D.earnings.length){$("earnCard").hidden=false;$("earn").innerHTML=D.earnings.map(r=>`<div class="row"><span class="tk">${e(r.t)}</span><span class="nm">${e(r.date)}</span></div>`).join("")}
 
 // today
-if(D.focus){$("focusCard").hidden=false;$("focus").textContent=D.focus;$("goalLink").textContent=D.goal_link||""}
-if(D.weather){const w=D.weather;$("wxCard").hidden=false;$("wx").textContent=`High ${w.hi}\u00b0${w.unit}, low ${w.lo}\u00b0${w.unit}, ${w.rain}% chance of rain.`}
-$("goals").innerHTML=D.goals.map(g=>`<div><b>${e(g.title)}</b><div class="bar"><i style="width:${Math.max(0,Math.min(100,+g.progress||0))}%"></i></div></div>`).join("");
-
 let S={};try{S=JSON.parse(localStorage.getItem("s:"+D.date)||"{}")}catch(x){}
 const save=()=>{try{localStorage.setItem("s:"+D.date,JSON.stringify(S))}catch(x){}};
-function checks(id,items,key){S[key]=S[key]||{};items.forEach((t,i)=>{const l=document.createElement("label");l.className="task"+(S[key][i]?" done":"");
-l.innerHTML=`<input type="checkbox" ${S[key][i]?"checked":""}><span>${e(t)}</span>`;
-l.firstChild.addEventListener("change",ev=>{l.classList.toggle("done",ev.target.checked);S[key][i]=ev.target.checked;save()});$(id).appendChild(l)})}
-checks("tasks",D.tasks,"t");checks("habits",D.habits,"h");
-const rv=$("rev");rv.value=S.rev||"";rv.addEventListener("input",()=>{S.rev=rv.value;save()});
+let LS={};try{LS=JSON.parse(localStorage.getItem("lists")||"null")||{}}catch(x){}
+const DEF={tasks:D.tasks,habits:D.habits,goals:D.goals};
+const lst=k=>LS[k]||DEF[k];
+const saveL=()=>{try{localStorage.setItem("lists",JSON.stringify(LS))}catch(x){}};
+if(D.weather){const w=D.weather;$("wxCard").hidden=false;$("wx").textContent=`High ${w.hi}\u00b0${w.unit}, low ${w.lo}\u00b0${w.unit}, ${w.rain}% chance of rain.`}
+
+function next(){
+  const t=lst("tasks").find(x=>!(S.t||{})[x]);
+  $("focusCard").hidden=!lst("tasks").length;
+  $("focus").textContent=t||"Everything on your list is done.";
+  $("goalLink").textContent=(!LS.tasks&&!LS.goals&&D.goal_link)?D.goal_link:"";
+}
+function renderChecks(id,key){
+  const box=$(id);box.innerHTML="";S[key]=S[key]||{};
+  lst(key==="t"?"tasks":"habits").forEach(t=>{const l=document.createElement("label");l.className="task"+(S[key][t]?" done":"");
+    l.innerHTML=`<input type="checkbox" ${S[key][t]?"checked":""}><span>${e(t)}</span>`;
+    l.firstChild.addEventListener("change",ev=>{S[key][t]=ev.target.checked;l.classList.toggle("done",ev.target.checked);save();next()});
+    box.appendChild(l)});
+  if(!box.children.length)box.innerHTML='<p class="note">Nothing here yet. Tap Edit to add items.</p>';
+}
+function renderGoals(){
+  $("goals").innerHTML=lst("goals").map(g=>`<div><b>${e(g.title)}</b><div class="bar"><i style="width:${Math.max(0,Math.min(100,+g.progress||0))}%"></i></div></div>`).join("")||'<p class="note">No goals yet. Tap Edit to add one.</p>';
+}
+function mk(tag,props,...kids){const n=document.createElement(tag);Object.assign(n,props||{});n.append(...kids);return n}
+function editor(boxId,key,isGoal,done){
+  const box=$(boxId);let arr=lst(key).map(x=>isGoal?{title:x.title,progress:+x.progress||0}:x);
+  const draw=()=>{box.innerHTML="";
+    arr.forEach((it,i)=>{
+      const inp=mk("input",{type:"text",value:isGoal?it.title:it});inp.setAttribute("aria-label","Item "+(i+1));
+      inp.oninput=()=>{if(isGoal)it.title=inp.value;else arr[i]=inp.value};
+      const rm=mk("button",{className:"ghost",textContent:"Remove"});rm.onclick=()=>{arr.splice(i,1);draw()};
+      box.append(mk("div",{className:"erow"},inp,rm));
+      if(isGoal){const r=mk("input",{type:"range",min:0,max:100,value:it.progress});r.setAttribute("aria-label","Progress");const v=mk("span",{textContent:it.progress+"%",className:"nm"});
+        r.oninput=()=>{it.progress=+r.value;v.textContent=r.value+"%"};box.append(mk("div",{className:"erow"},r,v))}
+    });
+    const ni=mk("input",{type:"text",placeholder:isGoal?"Add a goal":"Add an item"});
+    const ab=mk("button",{textContent:"Add"});ab.onclick=()=>{const v=ni.value.trim();if(v){arr.push(isGoal?{title:v,progress:0}:v);draw()}};
+    box.append(mk("div",{className:"erow"},ni,ab));
+    const sv=mk("button",{textContent:"Save"});sv.onclick=()=>{LS[key]=isGoal?arr.filter(g=>g.title.trim()).map(g=>({title:g.title.trim(),progress:g.progress})):arr.map(x=>x.trim()).filter(Boolean);saveL();done()};
+    const rs=mk("button",{className:"ghost",textContent:"Reset to default"});rs.onclick=()=>{delete LS[key];saveL();done()};
+    box.append(mk("div",{className:"erow"},sv,rs));
+  };
+  draw();
+}
+const R={tasks:()=>{renderChecks("tasks","t");next()},habits:()=>renderChecks("habits","h"),goals:renderGoals};
+$("eT").onclick=()=>editor("tasks","tasks",false,R.tasks);
+$("eG").onclick=()=>editor("goals","goals",true,R.goals);
+$("eH").onclick=()=>editor("habits","habits",false,R.habits);
+R.tasks();R.habits();R.goals();
+
+// evening review
+const rv=$("rev");rv.value=S.rev||"";
+function pastReviews(){const out=[];try{for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);
+  if(k&&k.indexOf("s:")===0){try{const v=JSON.parse(localStorage.getItem(k));if(v&&v.rev&&v.rev.trim())out.push([k.slice(2),v.rev.trim()])}catch(x){}}}}catch(x){}
+  return out.sort((a,b)=>b[0].localeCompare(a[0]))}
+function showPast(){const p=pastReviews();$("past").innerHTML=p.length?p.map(r=>`<p><b>${e(r[0])}</b><br>${e(r[1]).replace(/\n/g,"<br>")}</p>`).join(""):'<p class="note">Nothing saved yet.</p>'}
+rv.addEventListener("input",()=>{S.rev=rv.value;save();$("saved").textContent="Saved on this device.";showPast()});
+$("shareRev").onclick=async function(){const txt=pastReviews().map(r=>r[0]+"\n"+r[1]).join("\n\n")||"No reviews yet.";
+  try{if(navigator.share)await navigator.share({text:txt});else{await navigator.clipboard.writeText(txt);this.textContent="Copied"}}catch(x){}};
+showPast();
 
 // news
 if(D.news_brief){$("brief").hidden=false;$("briefText").textContent=D.news_brief}
@@ -184,7 +263,83 @@ if($("rb"))$("rb").onclick=function(){$("ra").hidden=false;this.hidden=true};
 const G=[];
 if(D.finance)G.push(card("Finance lesson",`<h3>${e(D.finance.title)}</h3><p>${e(D.finance.body)}</p><p><b>Try it:</b> ${e(D.finance.try)}</p>`));
 if(D.business)G.push(card("Entrepreneurship lesson",`<h3>${e(D.business.title)}</h3><p>${e(D.business.body)}</p><p><b>Today's challenge:</b> ${e(D.business.challenge)}</p>`));
+if(D.sales)G.push(card("Sales skill",`<h3>${e(D.sales.title)}</h3><p>${e(D.sales.body)}</p><p class="ex">${e(D.sales.script)}</p><p style="margin-top:10px"><b>Today's practice:</b> ${e(D.sales.practice)}</p>`));
 $("growGrid").innerHTML=G.join("");if(!G.length)hideSec("grow");
+
+
+// country of the day
+const mainOf=f=>{const g=f.geometry;if(g.type==="Polygon")return f;let b=null,m=-1;g.coordinates.forEach(c=>{const a=d3.geoArea({type:"Polygon",coordinates:c});if(a>m){m=a;b=c}});return{type:"Feature",geometry:{type:"Polygon",coordinates:b}}};
+const nid=x=>String(x).padStart(3,"0");
+function svgBox(w,h){return d3.create("svg").attr("viewBox",`0 0 ${w} ${h}`).attr("role","img")}
+function mapGlobe(me,feats,C){
+  const W=300,H=300,svg=svgBox(W,H).attr("aria-label","Globe showing where "+C.name+" is");
+  const c=me?d3.geoCentroid(mainOf(me)):[(C.latlng||[0,0])[1],(C.latlng||[0,0])[0]];
+  const p=d3.geoOrthographic().rotate([-c[0],-c[1]]).fitExtent([[8,8],[W-8,H-8]],{type:"Sphere"}),path=d3.geoPath(p);
+  svg.append("path").datum({type:"Sphere"}).attr("d",path).attr("class","sea");
+  svg.append("g").selectAll("path").data(feats.filter(f=>f!==me)).join("path").attr("d",path).attr("class","land");
+  if(me)svg.append("path").datum(me).attr("d",path).attr("class","hl");
+  const pt=p(c);if(pt)svg.append("circle").attr("cx",pt[0]).attr("cy",pt[1]).attr("r",9).attr("class","ring");
+  return svg.node();
+}
+function labelAt(svg,p,f,text,W,H,cls){const pt=p(d3.geoCentroid(mainOf(f)));if(!pt||isNaN(pt[0]))return;
+  const x=Math.max(30,Math.min(W-30,pt[0])),y=Math.max(14,Math.min(H-8,pt[1]));
+  svg.append("text").attr("x",x).attr("y",y).attr("class","lbl"+(cls?" "+cls:"")).text(text)}
+function mapAround(me,feats,byId,C){
+  const W=340,H=300,svg=svgBox(W,H).attr("aria-label","Map of "+C.name+" and its neighbors"),main=mainOf(me);
+  const p=d3.geoMercator().fitExtent([[W*.22,H*.22],[W*.78,H*.78]],main);
+  if(p.scale()>6000){p.scale(6000).center(d3.geoCentroid(main)).translate([W/2,H/2])}
+  const path=d3.geoPath(p);
+  svg.append("rect").attr("width",W).attr("height",H).attr("class","sea");
+  svg.append("g").selectAll("path").data(feats.filter(f=>f!==me)).join("path").attr("d",path).attr("class","land");
+  svg.append("path").datum(me).attr("d",path).attr("class","hl");
+  (C.neighbors||[]).forEach(n=>{const f=n.ccn3&&byId.get(nid(n.ccn3));if(f)labelAt(svg,p,f,n.name,W,H)});
+  labelAt(svg,p,me,C.name,W,H,"me");
+  return svg.node();
+}
+function mapFormer(me,feats,byId,C){
+  const F=C.former,W=340,H=300,svg=svgBox(W,H).attr("aria-label","Map of "+F.name);
+  const mem=F.ccn3.map(i=>byId.get(nid(i))).filter(Boolean);if(mem.length<2)return null;
+  const p=d3.geoMercator().fitExtent([[W*.1,H*.1],[W*.9,H*.9]],{type:"FeatureCollection",features:mem.map(mainOf)}),path=d3.geoPath(p);
+  svg.append("rect").attr("width",W).attr("height",H).attr("class","sea");
+  svg.append("g").selectAll("path").data(feats.filter(f=>!mem.includes(f))).join("path").attr("d",path).attr("class","land");
+  svg.append("g").selectAll("path").data(mem.filter(f=>f!==me)).join("path").attr("d",path).attr("class","fmr");
+  if(me)svg.append("path").datum(me).attr("d",path).attr("class","hl");
+  return svg.node();
+}
+async function drawMaps(C){
+  const box=$("maps");
+  try{
+    const topo=await (await fetch("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json")).json();
+    const feats=topojson.feature(topo,topo.objects.countries).features;
+    const byId=new Map(feats.map(f=>[nid(f.id),f]));
+    const me=C.ccn3?byId.get(nid(C.ccn3)):null;
+    box.innerHTML="";
+    const add=(node,cap)=>{if(!node)return;const fig=document.createElement("figure");fig.append(node);fig.append(mk("figcaption",{textContent:cap}));box.append(fig)};
+    add(mapGlobe(me,feats,C),"Where it is on the globe");
+    if(me)add(mapAround(me,feats,byId,C),"The country and its neighbors");
+    else box.append(mk("p",{className:"note",textContent:"This country is too small to draw at this map scale. The ring on the globe marks it."}));
+    if(C.former)add(mapFormer(me,feats,byId,C),`${C.former.name} (${C.former.years}): today's countries that were part of it, with ${C.name} in the strong color`);
+  }catch(err){box.innerHTML='<p class="note">Maps could not load right now.</p>'}
+}
+function renderCountry(C){
+  const f=(a,b)=>b?`<div><span>${e(a)}</span><b>${e(b)}</b></div>`:"";
+  const km=C.area?`${Math.round(C.area).toLocaleString()} km\u00b2 (${Math.round(C.area*0.386102).toLocaleString()} sq mi)`:"";
+  const nb=(C.neighbors||[]).map(n=>e(n.name)).join(", ")||(C.landlocked===false?"None by land (island or isolated)":"");
+  $("countryCard").innerHTML=`<h3 style="font-size:24px;display:flex;align-items:center">${C.flag&&/^https:/.test(C.flag)?`<img class="cflag" src="${e(C.flag)}" alt="Flag of ${e(C.name)}">`:""}<span>${e(C.name)}</span></h3>
+  <p class="sub">${e(C.official||"")}</p><p style="margin-top:10px">${e(C.summary||"")}</p>
+  <div class="facts">${f("Capital",C.capital)}${f("Population (approx.)",C.population?C.population.toLocaleString():"")}${f("Area",km)}${f("Region",[C.subregion,C.region].filter(Boolean).join(", "))}${f("Currency",(C.currencies||[]).join(", "))}${f("Languages",(C.languages||[]).join(", "))}${f("Borders",nb)}${f("Time zone",(C.timezones||[]).join(", "))}</div>
+  <div class="maps" id="maps"><p class="note">Loading maps...</p></div>
+  ${C.geography?`<h3>Geography</h3><p>${e(C.geography)}</p>`:""}
+  ${C.origins?`<h3>Origins and settlement</h3><p>${e(C.origins)}</p>`:""}
+  ${C.former?`<h3>Before it was this country</h3><p><b>${e(C.former.name)}</b> (${e(C.former.years)}). ${e(C.former.note)}</p>`:""}
+  ${(C.timeline||[]).length?`<h3>Key moments</h3><div class="tl">${C.timeline.map(t=>`<b>${e(t.year)}</b><span>${e(t.event)}</span>`).join("")}</div>`:""}
+  ${C.recent?`<h3>In recent decades</h3><p>${e(C.recent)}</p>`:""}
+  ${(C.famous||[]).length?`<h3>Famous people</h3><ul class="clean">${C.famous.map(x=>`<li><b>${e(x.name)}</b>: ${e(x.known_for)}</li>`).join("")}</ul>`:""}
+  ${(C.facts||[]).length?`<h3>Good to know</h3><ul class="clean">${C.facts.map(x=>`<li>${e(x)}</li>`).join("")}</ul>`:""}
+  <p class="note">Population, area, currency, and flag come from the REST Countries service. Maps show today's borders.</p>`;
+  drawMaps(C);
+}
+if(D.country)renderCountry(D.country);else hideSec("country");
 
 $("foot").textContent="Updated "+D.generated+". Built automatically each morning.";
 </script>

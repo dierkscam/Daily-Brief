@@ -9,6 +9,7 @@ import datetime as dt
 import json
 import os
 import pathlib
+import random
 import sys
 import urllib.parse
 import urllib.request
@@ -135,7 +136,8 @@ Return ONLY one JSON object, no markdown fences, with exactly these keys:
  "vocab": {"word": "", "pos": "", "pron": "", "def": "", "example": "one natural example sentence"},
  "mental_model": {"title": "", "body": "2-3 sentences"},
  "finance": {"title": "", "body": "3-4 sentences teaching one personal finance or investing concept", "try": "a small example or exercise"},
- "business": {"title": "", "body": "3-4 sentences teaching one entrepreneurship concept", "challenge": "one small action for today"}
+ "business": {"title": "", "body": "3-4 sentences teaching one entrepreneurship concept", "challenge": "one small action for today"},
+ "sales": {"title": "name of one sales technique or skill", "body": "3-4 sentences explaining it and when to use it", "script": "a short example of what to actually say", "practice": "one small way to practice it today"}
 }
 
 Rules:
@@ -143,18 +145,110 @@ Rules:
 - news_brief: only summarize the provided headlines. Do not invent facts or figures.
 - history: only well-documented events you are confident about, with the correct year.
 - Do not repeat anything in recent_topics. Vocabulary should be useful, not obscure for its own sake.
-- finance and business lessons should build gradually from fundamentals toward more advanced ideas, using recent_topics to see how far along the reader is.
+- finance, business, and sales lessons should build gradually from fundamentals toward more advanced ideas, using recent_topics to see how far along the reader is.
 - Teach concepts. Never tell the reader to buy or sell any security.
 - Plain punctuation, warm and direct tone."""
 
 
-def ask_claude(ctx):
+def claude_json(system, ctx, max_tokens=3500):
     import anthropic
     client = anthropic.Anthropic()
-    r = client.messages.create(model=MODEL, max_tokens=3500, system=SYSTEM,
+    r = client.messages.create(model=MODEL, max_tokens=max_tokens, system=system,
                                messages=[{"role": "user", "content": json.dumps(ctx, ensure_ascii=False)}])
     text = "".join(b.text for b in r.content if getattr(b, "type", "") == "text")
     return json.loads(text[text.find("{"): text.rfind("}") + 1])
+
+
+def ask_claude(ctx):
+    return claude_json(SYSTEM, ctx)
+
+
+# ------------------------------------------------------------ country of the day
+REST = "https://restcountries.com/v3.1/"
+
+COUNTRY_SYSTEM = """You write the "country of the day" lesson for a personal dashboard.
+You receive JSON with a country's name, region, capital, and neighbors.
+Return ONLY one JSON object, no markdown fences, with exactly these keys:
+{
+ "summary": "2-3 sentence overview that makes the country feel distinct",
+ "geography": "3-4 sentences on terrain, climate, and major natural features",
+ "origins": "3-4 sentences on early peoples, settlement, and how the nation formed",
+ "timeline": [{"year": "", "event": ""}],
+ "recent": "3-4 sentences on the last few decades. Avoid claims about current leaders or very recent events.",
+ "famous": [{"name": "", "known_for": ""}],
+ "facts": ["4 surprising or memorable facts, including the origin of the country's name if known"],
+ "former": null
+}
+Rules:
+- timeline: 6 to 8 well-documented events in order, with years.
+- famous: 5 people from varied fields.
+- former: if this country was once part of a larger state or union, or split from one (for example the USSR, Yugoslavia,
+  Czechoslovakia, Ottoman Empire, Gran Colombia), use {"name": "", "years": "", "note": "one sentence on how it ended",
+  "members": ["ISO 3166-1 alpha-3 codes of today's countries that were part of it"]}. Otherwise null. Only include
+  members you are confident about.
+- Do not state population, area, or currency; those come from another source.
+- Only well-documented facts. Plain punctuation."""
+
+
+def rest(path):
+    return json.loads(http_get(REST + path))
+
+
+def pick_country(state):
+    rows = rest("all?fields=cca3,ccn3,name,independent")
+    pool = sorted([r for r in rows if r.get("independent") and r.get("ccn3")], key=lambda r: r["cca3"])
+    random.Random(42).shuffle(pool)
+    codes = {r["cca3"]: r["ccn3"] for r in rows if r.get("ccn3")}
+    done = state.get("countries_done", [])
+    left = [r for r in pool if r["cca3"] not in done]
+    if not left:
+        done, left = [], pool
+    return left[0]["cca3"], codes, done
+
+
+def country_facts(code):
+    c = rest("alpha/" + code)
+    c = c[0] if isinstance(c, list) else c
+    neighbors = []
+    if c.get("borders"):
+        for n in rest("alpha?codes=" + ",".join(c["borders"]) + "&fields=name,cca3,ccn3,flags"):
+            neighbors.append({"name": n["name"]["common"], "ccn3": n.get("ccn3"),
+                              "flag": (n.get("flags") or {}).get("svg") or (n.get("flags") or {}).get("png")})
+    cur = []
+    for v in (c.get("currencies") or {}).values():
+        cur.append(f'{v.get("name")} ({v["symbol"]})' if v.get("symbol") else v.get("name"))
+    return {
+        "name": c["name"]["common"], "official": c["name"].get("official", ""), "cca3": c["cca3"], "ccn3": c.get("ccn3"),
+        "capital": ", ".join(c.get("capital") or []), "region": c.get("region", ""), "subregion": c.get("subregion", ""),
+        "population": c.get("population"), "area": c.get("area"),
+        "languages": list((c.get("languages") or {}).values()), "currencies": cur,
+        "flag": (c.get("flags") or {}).get("svg") or (c.get("flags") or {}).get("png"),
+        "landlocked": c.get("landlocked"), "timezones": (c.get("timezones") or [])[:3],
+        "latlng": c.get("latlng"), "neighbors": neighbors,
+    }
+
+
+def build_country(state):
+    """Returns (country dict or None). Updates state['countries_done'] on success."""
+    try:
+        code, codes, done = pick_country(state)
+        facts = country_facts(code)
+        ai = claude_json(COUNTRY_SYSTEM, {"country": facts["name"], "official": facts["official"], "region": facts["region"],
+                                          "subregion": facts["subregion"], "capital": facts["capital"],
+                                          "neighbors": [n["name"] for n in facts["neighbors"]]}, max_tokens=3500)
+        former = ai.get("former")
+        if isinstance(former, dict) and former.get("members"):
+            ids = [codes[m] for m in former["members"] if m in codes]
+            former = {"name": former.get("name", ""), "years": former.get("years", ""), "note": former.get("note", ""), "ccn3": ids} if len(ids) >= 2 else None
+        else:
+            former = None
+        facts.update({k: ai.get(k) for k in ("summary", "geography", "origins", "timeline", "recent", "famous", "facts")})
+        facts["former"] = former
+        state["countries_done"] = done + [code]
+        return facts
+    except Exception as ex:
+        log("country failed:", ex)
+        return None
 
 
 # --------------------------------------------------------------------- state
@@ -172,6 +266,7 @@ def update_state(state, ai):
         "vocab": (ai.get("vocab") or {}).get("word"),
         "finance": (ai.get("finance") or {}).get("title"),
         "business": (ai.get("business") or {}).get("title"),
+        "sales": (ai.get("sales") or {}).get("title"),
         "mental_model": (ai.get("mental_model") or {}).get("title"),
     }
     for k, v in picks.items():
@@ -244,13 +339,35 @@ def demo_data():
         "mental_model": {"title": "Circle of competence", "body": "Know which topics you understand well enough to judge, and be honest about where that circle ends."},
         "finance": {"title": "Compound growth and the rule of 72", "body": "Compounding means earning returns on earlier returns. Divide 72 by the yearly return to estimate years to double.", "try": "At 8% a year, money doubles in about 9 years."},
         "business": {"title": "Start with the problem, not the idea", "body": "Most failed businesses solved a problem nobody cared enough about. Talk to people who have the problem first.", "challenge": "Ask one person what annoys them most about their week."},
+        "sales": {"title": "Ask open questions first", "body": "Buyers trust sellers who understand their situation. Open questions that start with how or what get people talking about their real needs before you pitch anything.", "script": "What's the biggest thing slowing your team down right now?", "practice": "In your next conversation, ask two open questions before offering any opinion."},
     }
     return stocks, indices, groups, ai
+
+
+def demo_country():
+    return {
+        "name": "Slovenia", "official": "Republic of Slovenia", "cca3": "SVN", "ccn3": "705", "capital": "Ljubljana",
+        "region": "Europe", "subregion": "Central Europe", "population": 2100126, "area": 20273.0,
+        "languages": ["Slovene"], "currencies": ["Euro (\u20ac)"], "flag": "https://flagcdn.com/si.svg",
+        "landlocked": False, "timezones": ["UTC+01:00"], "latlng": [46.0, 15.0],
+        "neighbors": [{"name": "Italy", "ccn3": "380"}, {"name": "Austria", "ccn3": "040"},
+                      {"name": "Hungary", "ccn3": "348"}, {"name": "Croatia", "ccn3": "191"}],
+        "summary": "Demo summary: a small Alpine and Adriatic country with forests covering over half its land.",
+        "geography": "Demo geography: the Julian Alps, a short Adriatic coast, and rolling wine country.",
+        "origins": "Demo origins: Slavic peoples settled the area in the early medieval period.",
+        "timeline": [{"year": "1991", "event": "Declared independence from Yugoslavia."}, {"year": "2004", "event": "Joined the European Union."}],
+        "recent": "Demo recent history: joined the eurozone in 2007.",
+        "famous": [{"name": "Demo Person", "known_for": "Demo achievement"}],
+        "facts": ["Demo fact one.", "Demo fact two."],
+        "former": {"name": "Yugoslavia", "years": "1918 to 1992", "note": "Demo note: the federation dissolved in the early 1990s.",
+                   "ccn3": ["705", "191", "070", "688", "499", "807"]},
+    }
 
 
 def main():
     state = load_state()
     stocks, indices, groups, ai = demo_data() if DEMO else live_data(state)
+    country = demo_country() if DEMO else build_country(state)
 
     data = {
         "name": CFG["name"],
@@ -277,6 +394,8 @@ def main():
         "mental_model": ai.get("mental_model"),
         "finance": ai.get("finance"),
         "business": ai.get("business"),
+        "sales": ai.get("sales"),
+        "country": country,
     }
 
     payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/").replace("<!--", "<\\!--")
@@ -301,8 +420,8 @@ def main():
     summary = {"title": f'Good morning, {CFG["name"]}', "body": body, "url": f"https://{owner}.github.io/{name}/"}
     (out / "summary.json").write_text(json.dumps(summary))
 
-    if not DEMO and ai:
-        update_state(state, ai)
+    if not DEMO and (ai or country):
+        update_state(state, ai or {})
     print("Built docs/index.html")
 
 

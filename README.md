@@ -23,14 +23,27 @@ lessons, rebuilds the dashboard, and sends a notification to your phone.
 
 ## Changing things
 
-- **Watchlist, goals, tasks, habits, news feeds, timezone, weather location:** edit `config.json`.
-  You can do this from the GitHub mobile app.
+- **To-do list, goals, and habits:** tap **Edit** on the dashboard itself. Changes save on that device only, so they are private and need no GitHub.
+  `config.json` holds the default lists, and the **Reset to default** button restores them.
+- **Watchlist, news feeds, timezone, weather location:** edit `config.json` (the GitHub mobile app works).
 - **Delivery time:** edit the `cron` line in `.github/workflows/daily.yml`. It is in UTC, so
   11:00 UTC is 7am US Eastern during daylight time and 6am in winter. GitHub may start a few minutes late.
 - **Weather:** set `lat` and `lon` in `config.json`.
 - **Preview the design with sample data:** `python generate.py --demo`
 
+## New sections
+
+- **Country of the day:** a different country each day (data from REST Countries, text from Claude), with flag, facts, history,
+  famous people, and three maps: a globe, the country with its neighbors, and, when the country was once part of a larger state
+  such as Yugoslavia, a map of that former state. Maps use today's borders because historical borders are not available.
+  The maps load from a public CDN, so they need an internet connection.
+- **Sales skill:** one technique a day with an example script and a small practice.
+- **Evening review:** saved on your device as you type, with a Past reviews list and a Share or copy all button.
+
 ## Good to know
+
+- Edits, checkmarks, and reviews live in your browser. The Home Screen version and Safari keep **separate** storage, so use one of them
+  consistently. Use Share or copy all now and then to back your reviews up (for example into Notes).
 
 - GitHub Pages sites are public. Anyone with the link can see your watchlist, goals, and tasks.
   Checkmarks and evening notes stay in your own browser and are never uploaded.
