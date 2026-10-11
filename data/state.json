@@ -1,1 +1,23 @@
-{}
+{
+ "recent": {
+  "psychology": [
+   "Confirmation Bias"
+  ],
+  "vocab": [
+   "Equanimity"
+  ],
+  "finance": [
+   "Compound Growth"
+  ],
+  "business": [
+   "Value Proposition"
+  ],
+  "mental_model": [
+   "Second-Order Thinking"
+  ]
+ },
+ "last_vocab": {
+  "word": "Equanimity",
+  "def": "Mental calmness and evenness of temper, especially in a difficult situation."
+ }
+}

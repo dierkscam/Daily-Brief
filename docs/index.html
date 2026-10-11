@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Brief">
+<title>Daily brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F5F8;--card:#fff;--ink:#0E1A2B;--mut:#5B6878;--line:#DCE2EA;--acc:#0A7C8C;--up:#12805C;--dn:#C23A3A;--soft:#E9EEF4;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0B1422;--card:#121F33;--ink:#E8EEF6;--mut:#92A1B5;--line:#22324A;--acc:#4FD1E0;--up:#4CC38A;--dn:#F0716F;--soft:#192A42}}
+:root[data-theme="dark"]{--bg:#0B1422;--card:#121F33;--ink:#E8EEF6;--mut:#92A1B5;--line:#22324A;--acc:#4FD1E0;--up:#4CC38A;--dn:#F0716F;--soft:#192A42}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 56px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Figtree,system-ui,sans-serif}
+.wrap{max-width:880px;margin:0 auto;padding:20px 16px 48px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(30px,7vw,44px);line-height:1.1;font-weight:700}
+h2{font-size:22px;font-weight:700;margin-bottom:12px}
+h3{font-size:18px}
+.sub{color:var(--mut);margin:6px 0 0}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;gap:8px;overflow-x:auto;padding:10px 16px;border-bottom:1px solid var(--line)}
+nav a{flex:none;color:var(--ink);text-decoration:none;font-weight:500;font-size:14px;padding:6px 14px;border-radius:99px;background:var(--soft)}
+a:focus-visible,summary:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+section{margin-top:32px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.grid{display:grid;gap:12px}
+@media(min-width:640px){.g2{grid-template-columns:1fr 1fr}}
+.idx{display:flex;gap:12px;flex-wrap:wrap}
+.idx .card{flex:1 1 160px}
+.big{font-family:Fraunces,Georgia,serif;font-size:26px;font-weight:700}
+.up{color:var(--up)}.dn{color:var(--dn)}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.tk{font-weight:600}.nm{color:var(--mut);font-size:13px}
+.why{font-size:13px;margin-top:2px;max-width:34ch}
+.pill{font-weight:600;font-size:14px;padding:2px 9px;border-radius:7px;background:var(--soft);white-space:nowrap}
+.pill.up{background:color-mix(in srgb,var(--up) 16%,transparent)}.pill.dn{background:color-mix(in srgb,var(--dn) 16%,transparent)}
+details{margin-top:12px}
+summary{cursor:pointer;font-weight:600;padding:12px 16px;background:var(--card);border:1px solid var(--line);border-radius:14px}
+.tag{display:inline-block;font-size:12px;font-weight:600;color:var(--acc);border:1px solid var(--acc);border-radius:6px;padding:0 7px;margin-bottom:6px}
+.note{font-size:13px;color:var(--mut);margin-top:10px}
+.task{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.task:last-child{border-bottom:0}
+.task input{width:20px;height:20px;accent-color:var(--acc)}
+.task.done span{text-decoration:line-through;color:var(--mut)}
+.bar{height:8px;border-radius:99px;background:var(--soft);overflow:hidden;margin:6px 0 12px}
+.bar i{display:block;height:100%;background:var(--acc);border-radius:99px}
+.word{font-family:Fraunces,Georgia,serif;font-size:34px;font-weight:700}
+.ex{border-left:3px solid var(--acc);padding-left:12px;color:var(--mut);margin:10px 0 0}
+.lnk{display:block;color:var(--ink);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}
+.lnk:last-child{border-bottom:0}
+.lnk small{display:block;color:var(--mut)}
+p{margin:0 0 10px}
+button{font:600 14px Figtree,system-ui,sans-serif;color:var(--bg);background:var(--acc);border:0;border-radius:8px;padding:8px 14px;cursor:pointer}
+[hidden]{display:none!important}
+textarea{width:100%;margin-top:6px;font:inherit;color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:10px;resize:vertical}
+.foot{margin-top:36px;font-size:13px;color:var(--mut)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav aria-label="Sections">
+<a href="#markets">Markets</a><a href="#today">Today</a><a href="#news">News</a><a href="#learn">Learn</a><a href="#grow">Grow</a><a href="#review">Review</a>
+</nav>
+<main class="wrap">
+<header>
+<h1 id="hello"></h1>
+<p class="sub" id="date"></p>
+</header>
+<div class="card" id="msg" style="margin-top:20px;border-left:4px solid var(--acc)" hidden></div>
+
+<section id="markets">
+<h2>Markets</h2>
+<div class="idx" id="indices"></div>
+<div class="card" style="margin-top:12px" id="breadthCard"><h3>Market breadth</h3><div class="bar" id="br" style="height:12px;margin:10px 0 6px"><i></i></div><div class="nm" id="brt"></div></div>
+<div class="card" style="margin-top:12px" id="alertsCard"><h3>Moved 2% or more</h3><div id="alerts"></div></div>
+<div class="grid g2" style="margin-top:12px">
+<div class="card"><h3>Rising</h3><div id="risers"></div></div>
+<div class="card"><h3>Falling</h3><div id="fallers"></div></div>
+</div>
+<div class="card" style="margin-top:12px" id="earnCard" hidden><span class="tag">Earnings in the next 7 days</span><div id="earn"></div></div>
+<details><summary>Full watchlist</summary><div class="card" id="all" style="margin-top:8px"></div></details>
+<p class="note" id="mnote"></p>
+</section>
+
+<section id="today">
+<h2>Today</h2>
+<div class="card" id="focusCard" style="margin-bottom:12px" hidden><span class="tag">One priority</span><p style="font-size:18px;margin:0" id="focus"></p><p class="note" id="goalLink" style="margin-bottom:0"></p></div>
+<div class="card" id="wxCard" style="margin-bottom:12px" hidden><span class="tag">Weather</span><p style="margin:0" id="wx"></p></div>
+<div class="grid g2">
+<div class="card"><h3>To do</h3><div id="tasks"></div><p class="note">Tap to check off. Edit your list in config.json.</p></div>
+<div class="card"><h3>Goals</h3><div id="goals" style="margin-top:10px"></div></div>
+</div>
+</section>
+
+<section id="news">
+<h2>News</h2>
+<div class="card" id="brief" style="margin-bottom:12px" hidden><span class="tag">The short version</span><p style="margin:0" id="briefText"></p></div>
+<div class="grid g2" id="newsGrid"></div>
+</section>
+
+<section id="learn"><h2>Learn something today</h2><div class="grid" id="learnGrid"></div></section>
+<section id="grow"><h2>Finance and business</h2><div class="grid g2" id="growGrid"></div></section>
+
+<section id="review">
+<h2>Habits and review</h2>
+<div class="grid g2">
+<div class="card"><h3>Daily habits</h3><div id="habits"></div></div>
+<div class="card"><h3>Evening review</h3><p class="sub">What went well, what you learned, and tomorrow's one priority.</p><textarea id="rev" rows="5" placeholder="Write a few lines"></textarea></div>
+</div>
+</section>
+
+<p class="foot" id="foot"></p>
+</main>
+<script>
+const D={"name": "Camden", "date": "2026-10-11", "date_label": "Sunday, October 11", "generated": "2026-10-11 17:56 EDT", "message": "Camden, a Sunday is the best time to decide what Monday gets to be. Thirty focused minutes today will do more for your goals than a vague promise to do more all week.", "focus": "Plan the week ahead", "goal_link": "Planning the week, learning the vocabulary word, and reviewing the movers each feed your three goals: a daily word habit, a weekly market concept, and a prepared watchlist before the open.", "indices": [{"name": "S&P 500 (SPY)", "price": 778.57, "pct": 0.5995}, {"name": "Dow (DIA)", "price": 516.11, "pct": 0.8717}, {"name": "Nasdaq 100 (QQQ)", "price": 751.27, "pct": 0.4936}], "stocks": [{"t": "MRVL", "n": "Marvell Technology", "p": 275.28, "pct": 0.2257}, {"t": "LITE", "n": "Lumentum", "p": 1103.355, "pct": 5.2217}, {"t": "SNDK", "n": "Sandisk", "p": 1581.82, "pct": -1.7173}, {"t": "MU", "n": "Micron Technology", "p": 1029.0, "pct": -0.6603}, {"t": "TTWO", "n": "Take-Two Interactive", "p": 213.44, "pct": 1.9439}, {"t": "BIRD", "n": "Smartbird", "p": 2.93, "pct": 1.7361}, {"t": "SPCX", "n": "Space Exploration Technologies", "p": 162.57, "pct": 1.2456}, {"t": "TSLA", "n": "Tesla", "p": 382.7, "pct": 2.0533}, {"t": "PPTA", "n": "Perpetua Resources", "p": 20.64, "pct": 2.6355}, {"t": "DELL", "n": "Dell Technologies", "p": 586.06, "pct": 2.0033}, {"t": "PL", "n": "Planet Labs", "p": 17.18, "pct": -0.0582}, {"t": "UAMY", "n": "United States Antimony", "p": 3.68, "pct": -1.0753}, {"t": "UUUU", "n": "Energy Fuels", "p": 9.96, "pct": 0.2012}, {"t": "XOM", "n": "ExxonMobil", "p": 168.94, "pct": 0.2611}, {"t": "QCOM", "n": "Qualcomm", "p": 175.5, "pct": -0.2898}, {"t": "OXY", "n": "Occidental Petroleum", "p": 60.11, "pct": -0.282}, {"t": "SRFM", "n": "Surf Air Mobility", "p": 0.9458, "pct": 1.7536}, {"t": "INTC", "n": "Intel", "p": 104.7, "pct": -2.2226}, {"t": "IBM", "n": "IBM", "p": 227.13, "pct": 0.2295}, {"t": "SPCE", "n": "Virgin Galactic", "p": 2.84, "pct": -3.4014}, {"t": "AIP", "n": "Arteris", "p": 22.44, "pct": -1.7513}, {"t": "ORCL", "n": "Oracle", "p": 141.4, "pct": 4.2081}, {"t": "AMD", "n": "Advanced Micro Devices", "p": 608.1, "pct": -2.0268}, {"t": "AVGO", "n": "Broadcom", "p": 361.54, "pct": 0.3887}, {"t": "RKLB", "n": "Rocket Lab", "p": 68.21, "pct": -0.2778}], "mover_notes": {"LITE": "Headlines point to a piece calling Lumentum an overlooked winner in co-packaged optics, and to AI earnings from ASML and Taiwan Semi looming this week.", "PPTA": "A headline notes Washington is writing billion-dollar checks for tungsten, which is relevant to a critical minerals company like Perpetua.", "INTC": "Headlines mention 500 million AI tool downloads and a deeper AI partnership with Applied Materials, though they do not clearly explain the day's decline."}, "news_brief": "Headlines point to a week where AI earnings from ASML and Taiwan Semi are expected to set the tone, with stock market futures in focus. Geopolitical news is also prominent, including reported attacks at Riyadh airport that left most Gulf stocks in the red. Ray Dalio is cautioning that stocks have little room for error.", "news": [{"tag": "Markets", "items": [{"h": "Saudi Arabia reports injuries in new attack at Riyadh airport, day after strike kills 13 - Reuters", "s": "Reuters", "u": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQSEo0VkFTZkY2VzMzeFV0OVRVbWN4aHFzaXFjV0FBN05uaEFONHhQVTN2a3JJM09NdFBzY1R3MnRrUFZOeFZfUDItOUd1NkxiT3dfOWduTHJKTlBzSGsyN3VCYTNkWG1ZTWlZMUpzbDdrc1dOZUs3VDRwa0lHN21tNnFNdFhQYUxoNmdfN1Zyb3FMRm04RzRVei0zY3FKN0FoY2JYTGFodjYtemdITVpKVXk3NlR2QXFIMU9YMnUtX004QW1GZ0UzZA?oc=5"}, {"h": "Here are the 6 big things we're watching in the stock market this week", "s": "CNBC", "u": "https://www.cnbc.com/investingclub/2026/10/11/here-are-the-6-big-things-were-watching-in-the-stock-market-this-week.html"}, {"h": "Strike reported on Yemeni Sanaa airport, Houthi-run TV says - Reuters", "s": "Reuters", "u": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOb2hZZTRZLXk2amlHSS1zWkYtUmkzdy1EUWRFZ3lRUzRLX2hOMkxkLXBSR1hnVmd1UkNrN0NpNXNneXgwcGJ2ZzgwRFRRUVo5QS1xSWlENjhWN1M0MGR5eFpPOVZQT0dMUGRWcTQ1YTN3aHhpTjZVVGVqSldfcDN3SFZTQTJSMTUyX1psaXpyb2VKTVU0OGIzeFViOXZGVnRGb0lvTDNVdERoX0tHaHc?oc=5"}, {"h": "Most Gulf stocks in red after attack on Riyadh airport - Reuters", "s": "Reuters", "u": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOOEliNzFKYlR3T0NNakk4TWxXWGJ0UlJfQ0JLdFVIRnlESENoRW4zdjNSWW02UjFJOFozRmlZdVZ2ZlFaOTFSdEc5RGd6QWVVaFFMNi1QRTdMSVg2dFQxaHROcjhjbnI4ekhnZUZVbXlmYVBQaDZ3TG1pcFQ5RnFaVXpfYUxWRG1acC1mYnR6d3ZtdXpxbTBBUFJkcU9ock1wbXc?oc=5"}, {"h": "I’m a psychologist who studies couples: The No. 1 way to end a fight before it escalates—it works ‘almost immediately’", "s": "CNBC", "u": "https://www.cnbc.com/make-it/2026/10/11/psychologist-couples-end-fight-before-escalates-partial-yield.html"}]}, {"tag": "Your movers", "items": [{"h": "LITE: Dow Jones Futures: Trump Claims Russia-Ukraine 'Energy Ceasefire'; ASML, Nvidia Chipmaker Taiwan Semi Earnings Loom", "s": "Yahoo", "u": "https://finnhub.io/api/news?id=1615ad8b4df6bf9cdd43a5cd983dd35b044c35f215602863c9c2aae659cabd91"}, {"h": "LITE: Dow Jones Futures Loom; ASML, Nvidia Chipmaker Taiwan Semi To Kick Off AI Earnings", "s": "Yahoo", "u": "https://finnhub.io/api/news?id=76138a8289e5b88d1550f8a97dd7b0848e3fa561e822d860ab4dbbabfa6fa8b4"}, {"h": "ORCL: It Now Takes $4.4B To Make the Forbes 400: See America's 10 Richest People", "s": "Yahoo", "u": "https://finnhub.io/api/news?id=efeecc16c57e17c46d04074221da4494af5c4c2acfc5edb20566d9cdfd57eaf9"}, {"h": "ORCL: AMD Stock Fell 6% in Three Sessions After Its Record Close. Here’s What OpenAI’s $20 Billion Revenue Gap Means for the Stock", "s": "Yahoo", "u": "https://finnhub.io/api/news?id=7a414154675b2576e865ecd91245f684364cc37f2e9826ffc703b577a05663a0"}, {"h": "SPCE: ACHR Outperforms Industry in the Past 3 Months: How to Play the Stock?", "s": "Yahoo", "u": "https://finnhub.io/api/news?id=d8c1d7d6020096c4b308f579ba39874f957863daea1a584509f7d8cd1a9e4ddf"}, {"h": "PPTA: Washington Is Writing Billion-Dollar Checks for Tungsten", "s": "Yahoo", "u": "https://finnhub.io/api/news?id=14654f4047ad5e2c59d57e98ef7cd7bec71c024e5ee27cc1e26668aa5f666dde"}, {"h": "INTC: Intel (INTC) Reaches 500 Million AI Tool Downloads As Edge Integrations Expand", "s": "Yahoo", "u": "https://finnhub.io/api/news?id=e639412bffa79f9817318a92846764217e4c9bba8a716b37944cc524d4affce9"}, {"h": "INTC: KLA Turned $1,000 Into $31,595 in a Decade, Crushing the S&P 500 by 8.7x", "s": "Yahoo", "u": "https://finnhub.io/api/news?id=31e91335b5d3345ef66746347569706cc2d48db4fc2d8f35f542678aeab6ca64"}]}, {"tag": "World", "items": [{"h": "Trump's 'energy ceasefire' claim welcomed by Zelensky but Russia silent", "s": "", "u": "https://www.bbc.co.uk/news/articles/c6pvg4jyz1m0o?at_medium=RSS&at_campaign=rss"}, {"h": "Saudi capital airport hit by second Houthi strike in two days", "s": "", "u": "https://www.bbc.co.uk/news/articles/cr93znyk44e1o?at_medium=RSS&at_campaign=rss"}, {"h": "Poland detains man suspected of planning assassination of PM Tusk", "s": "", "u": "https://www.bbc.co.uk/news/articles/c6n9rvynl5p5o?at_medium=RSS&at_campaign=rss"}, {"h": "Dozens of gold prospectors killed in strikes on Egypt-Sudan border, rights group says", "s": "", "u": "https://www.bbc.co.uk/news/articles/cqy43vrk8wv8o?at_medium=RSS&at_campaign=rss"}]}, {"tag": "Sports", "items": []}], "earnings": [], "weather": null, "goals": [{"title": "Learn a new word every day", "progress": 40}, {"title": "Study one market concept a week", "progress": 65}, {"title": "Review the watchlist before the open", "progress": 80}], "tasks": ["Review the watchlist movers", "Learn today's vocabulary word", "Spend 30 minutes on a goal", "Plan the week ahead"], "habits": ["Workout or walk", "Read for 20 minutes", "Drink enough water", "No phone the first hour"], "history": {"title": "October 11", "items": ["1968: NASA launched Apollo 7, the first crewed mission of the Apollo program, with Wally Schirra, Donn Eisele and Walt Cunningham aboard.", "1984: Kathryn Sullivan became the first American woman to walk in space, during a Space Shuttle Challenger mission.", "1899: The Second Boer War began in South Africa."]}, "psychology": {"title": "Confirmation Bias", "body": "Confirmation bias is the tendency to look for, notice, and remember information that supports what we already believe. If you think a company is great, you will read its good news closely and skim past the bad. It works quietly, so it feels like objectivity rather than bias. The effect is stronger when we have a strong emotional or financial stake in the answer.", "why": "Before the open, when you review your watchlist, ask yourself what evidence would change your mind about a position. Deliberately reading one credible opposing view is a cheap way to counter the bias."}, "vocab": {"word": "Equanimity", "pos": "noun", "pron": "ee-kwuh-NIM-ih-tee", "def": "Mental calmness and evenness of temper, especially in a difficult situation.", "example": "She handled the market's sharp swings with equanimity, sticking to the plan she had written down in calmer times."}, "recall": null, "mental_model": {"title": "Second-Order Thinking", "body": "First-order thinking asks what happens next. Second-order thinking asks what happens after that, and who responds to it. A headline about a government paying for a scarce material may help one company today, but it also invites competitors, higher costs, and policy shifts later."}, "finance": {"title": "Compound Growth", "body": "Compounding means your returns start earning returns of their own. A balance growing 7% a year roughly doubles every 10 years, because each year's gain is calculated on a larger base. The two biggest drivers are time and consistency, which is why starting early matters more than starting big. Fees and long gaps in investing quietly work against it.", "try": "Use the Rule of 72: divide 72 by an annual return, such as 6, 8, or 10, to estimate how many years it takes money to double. Write down all three answers."}, "business": {"title": "Value Proposition", "body": "A value proposition is a clear statement of the problem you solve, for whom, and why your solution is better than the alternatives. Strong ones are specific: they name a customer and an outcome rather than listing features. If you cannot say it in one or two sentences, the idea is probably still fuzzy. Every other business decision, from pricing to marketing, flows from it.", "challenge": "Write a one-sentence value proposition for any business idea you have, or for a company on your watchlist, using the format: we help [who] do [what] so that [result]."}};
+const $=id=>document.getElementById(id);
+const e=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const f=n=>n<1?n.toFixed(3):n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+const pc=p=>`<span class="pill ${p>=0?"up":"dn"}">${p>=0?"+":""}${p.toFixed(2)}%</span>`;
+const note=t=>D.mover_notes&&D.mover_notes[t]?`<div class="why">${e(D.mover_notes[t])}</div>`:"";
+const row=s=>`<div class="row"><div><div class="tk">${e(s.t)}</div><div class="nm">${e(s.n)}</div>${note(s.t)}</div><div style="text-align:right"><div>$${f(s.p)}</div>${pc(s.pct)}</div></div>`;
+const card=(tag,inner)=>`<div class="card learn"><span class="tag">${e(tag)}</span>${inner}</div>`;
+const hideSec=id=>{$(id).hidden=true};
+
+// header
+const h=new Date().getHours();
+$("hello").textContent=(h<12?"Good morning":h<18?"Good afternoon":"Good evening")+", "+D.name;
+$("date").textContent=D.date_label;
+if(D.message){$("msg").hidden=false;$("msg").innerHTML=`<h3 style="font-size:20px;line-height:1.35">${e(D.message)}</h3>`}
+
+// markets
+$("indices").innerHTML=D.indices.map(i=>`<div class="card"><div class="nm">${e(i.name)}</div><div class="big">${f(i.price)}</div>${pc(i.pct)}</div>`).join("");
+const st=D.stocks;
+if(st.length){
+  const sorted=st.slice().sort((a,b)=>b.pct-a.pct),up=st.filter(s=>s.pct>=0).length;
+  const bb=$("br");bb.style.background="var(--dn)";bb.firstElementChild.style.cssText=`width:${up/st.length*100}%;background:var(--up)`;
+  $("brt").textContent=`${up} of ${st.length} tickers are up, ${st.length-up} are down.`;
+  const big=sorted.filter(s=>Math.abs(s.pct)>=2).sort((a,b)=>Math.abs(b.pct)-Math.abs(a.pct));
+  if(big.length)$("alerts").innerHTML=big.map(row).join("");else $("alertsCard").hidden=true;
+  $("risers").innerHTML=sorted.slice(0,4).map(row).join("");
+  $("fallers").innerHTML=sorted.slice(-4).reverse().map(row).join("");
+  $("all").innerHTML=st.map(row).join("");
+  $("mnote").textContent="Prices are from the last update ("+D.generated+"), not live.";
+}else{["breadthCard","alertsCard"].forEach(i=>$(i).hidden=true);$("mnote").textContent="No price data came through today. Check your Finnhub key."}
+if(D.earnings&&D.earnings.length){$("earnCard").hidden=false;$("earn").innerHTML=D.earnings.map(r=>`<div class="row"><span class="tk">${e(r.t)}</span><span class="nm">${e(r.date)}</span></div>`).join("")}
+
+// today
+if(D.focus){$("focusCard").hidden=false;$("focus").textContent=D.focus;$("goalLink").textContent=D.goal_link||""}
+if(D.weather){const w=D.weather;$("wxCard").hidden=false;$("wx").textContent=`High ${w.hi}\u00b0${w.unit}, low ${w.lo}\u00b0${w.unit}, ${w.rain}% chance of rain.`}
+$("goals").innerHTML=D.goals.map(g=>`<div><b>${e(g.title)}</b><div class="bar"><i style="width:${Math.max(0,Math.min(100,+g.progress||0))}%"></i></div></div>`).join("");
+
+let S={};try{S=JSON.parse(localStorage.getItem("s:"+D.date)||"{}")}catch(x){}
+const save=()=>{try{localStorage.setItem("s:"+D.date,JSON.stringify(S))}catch(x){}};
+function checks(id,items,key){S[key]=S[key]||{};items.forEach((t,i)=>{const l=document.createElement("label");l.className="task"+(S[key][i]?" done":"");
+l.innerHTML=`<input type="checkbox" ${S[key][i]?"checked":""}><span>${e(t)}</span>`;
+l.firstChild.addEventListener("change",ev=>{l.classList.toggle("done",ev.target.checked);S[key][i]=ev.target.checked;save()});$(id).appendChild(l)})}
+checks("tasks",D.tasks,"t");checks("habits",D.habits,"h");
+const rv=$("rev");rv.value=S.rev||"";rv.addEventListener("input",()=>{S.rev=rv.value;save()});
+
+// news
+if(D.news_brief){$("brief").hidden=false;$("briefText").textContent=D.news_brief}
+const groups=D.news.filter(g=>g.items&&g.items.length);
+$("newsGrid").innerHTML=groups.map(g=>`<div class="card"><span class="tag">${e(g.tag)}</span>${g.items.map(i=>{
+  const ok=/^https?:\/\//.test(i.u||"");const t=`${e(i.h)}${i.s?`<small>${e(i.s)}</small>`:""}`;
+  return ok?`<a class="lnk" href="${e(i.u)}" target="_blank" rel="noopener noreferrer">${t}</a>`:`<div class="lnk">${t}</div>`}).join("")}</div>`).join("");
+if(!groups.length&&!D.news_brief)hideSec("news");
+
+// learn
+const L=[];
+if(D.history&&D.history.items)L.push(card("This day in history",`<h3>${e(D.history.title)}</h3>`+D.history.items.map(t=>`<p>${e(t)}</p>`).join("")));
+if(D.psychology)L.push(card("Psychology",`<h3>${e(D.psychology.title)}</h3><p>${e(D.psychology.body)}</p><p><b>Why it matters:</b> ${e(D.psychology.why)}</p>`));
+if(D.vocab)L.push(card("Vocabulary",`<div class="word">${e(D.vocab.word)}</div><p class="sub">${e(D.vocab.pos)}, ${e(D.vocab.pron)}. ${e(D.vocab.def)}</p><p class="ex">${e(D.vocab.example)}</p>`));
+if(D.recall)L.push(card("Quick recall",`<h3>Yesterday's word: ${e(D.recall.word)}</h3><p>Can you define it before checking?</p><button id="rb">Show answer</button><p id="ra" hidden>${e(D.recall.def)}</p>`));
+if(D.mental_model)L.push(card("Mental model",`<h3>${e(D.mental_model.title)}</h3><p>${e(D.mental_model.body)}</p>`));
+$("learnGrid").innerHTML=L.join("");if(!L.length)hideSec("learn");
+if($("rb"))$("rb").onclick=function(){$("ra").hidden=false;this.hidden=true};
+
+const G=[];
+if(D.finance)G.push(card("Finance lesson",`<h3>${e(D.finance.title)}</h3><p>${e(D.finance.body)}</p><p><b>Try it:</b> ${e(D.finance.try)}</p>`));
+if(D.business)G.push(card("Entrepreneurship lesson",`<h3>${e(D.business.title)}</h3><p>${e(D.business.body)}</p><p><b>Today's challenge:</b> ${e(D.business.challenge)}</p>`));
+$("growGrid").innerHTML=G.join("");if(!G.length)hideSec("grow");
+
+$("foot").textContent="Updated "+D.generated+". Built automatically each morning.";
+</script>
+</body>
+</html>
