@@ -1,23 +1,28 @@
 {
  "recent": {
   "psychology": [
-   "Confirmation Bias"
+   "Confirmation Bias",
+   "Loss Aversion"
   ],
   "vocab": [
-   "Equanimity"
+   "Equanimity",
+   "Salient"
   ],
   "finance": [
-   "Compound Growth"
+   "Compound Growth",
+   "Nominal vs. Real Returns"
   ],
   "business": [
-   "Value Proposition"
+   "Value Proposition",
+   "Customer Segmentation"
   ],
   "mental_model": [
-   "Second-Order Thinking"
+   "Second-Order Thinking",
+   "Inversion"
   ]
  },
  "last_vocab": {
-  "word": "Equanimity",
-  "def": "Mental calmness and evenness of temper, especially in a difficult situation."
+  "word": "Salient",
+  "def": "Most noticeable or important; standing out from the rest."
  }
 }
