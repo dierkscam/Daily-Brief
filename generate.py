@@ -11,6 +11,8 @@ import os
 import pathlib
 import random
 import sys
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -190,65 +192,107 @@ Rules:
 - Only well-documented facts. Plain punctuation."""
 
 
-def rest(path):
-    return json.loads(http_get(REST + path))
+# ISO 3166-1 alpha-3 codes of the 193 UN member states. Used to pick a country each day.
+COUNTRY_CODES = """AFG ALB DZA AND AGO ATG ARG ARM AUS AUT AZE BHS BHR BGD BRB BLR BEL BLZ BEN BTN BOL BIH BWA BRA BRN BGR
+BFA BDI CPV KHM CMR CAN CAF TCD CHL CHN COL COM COG COD CRI CIV HRV CUB CYP CZE DNK DJI DMA DOM ECU EGY SLV GNQ ERI EST SWZ
+ETH FJI FIN FRA GAB GMB GEO DEU GHA GRC GRD GTM GIN GNB GUY HTI HND HUN ISL IND IDN IRN IRQ IRL ISR ITA JAM JPN JOR KAZ KEN
+KIR PRK KOR KWT KGZ LAO LVA LBN LSO LBR LBY LIE LTU LUX MDG MWI MYS MDV MLI MLT MHL MRT MUS MEX FSM MDA MCO MNG MNE MAR MOZ
+MMR NAM NRU NPL NLD NZL NIC NER NGA MKD NOR OMN PAK PLW PAN PNG PRY PER PHL POL PRT QAT ROU RUS RWA KNA LCA VCT WSM SMR STP
+SAU SEN SRB SYC SLE SGP SVK SVN SLB SOM ZAF SSD ESP LKA SDN SUR SWE CHE SYR TJK TZA THA TLS TGO TON TTO TUN TUR TKM TUV UGA
+UKR ARE GBR USA URY UZB VUT VEN VNM YEM ZMB ZWE""".split()
 
 
-def pick_country(state):
-    rows = rest("all?fields=cca3,ccn3,name,independent")
-    pool = sorted([r for r in rows if r.get("independent") and r.get("ccn3")], key=lambda r: r["cca3"])
-    random.Random(42).shuffle(pool)
-    codes = {r["cca3"]: r["ccn3"] for r in rows if r.get("ccn3")}
-    done = state.get("countries_done", [])
-    left = [r for r in pool if r["cca3"] not in done]
-    if not left:
-        done, left = [], pool
-    return left[0]["cca3"], codes, done
+def rest(path, tries=3):
+    """GET from REST Countries, retrying, and turning error replies into real errors."""
+    last = None
+    for i in range(tries):
+        try:
+            data = json.loads(http_get(REST + path))
+            if isinstance(data, dict) and ("message" in data or "status" in data) and "name" not in data:
+                raise RuntimeError(f"REST Countries replied with an error: {data.get('message') or data.get('status')}")
+            return data
+        except urllib.error.HTTPError as ex:
+            if ex.code == 404:
+                raise
+            last = ex
+        except Exception as ex:
+            last = ex
+        time.sleep(2 * (i + 1))
+    raise last
+
+
+def as_list(data):
+    return data if isinstance(data, list) else [data]
 
 
 def country_facts(code):
-    c = rest("alpha/" + code)
-    c = c[0] if isinstance(c, list) else c
+    c = as_list(rest("alpha/" + code))[0]
     neighbors = []
     if c.get("borders"):
-        for n in rest("alpha?codes=" + ",".join(c["borders"]) + "&fields=name,cca3,ccn3,flags"):
-            neighbors.append({"name": n["name"]["common"], "ccn3": n.get("ccn3"),
-                              "flag": (n.get("flags") or {}).get("svg") or (n.get("flags") or {}).get("png")})
+        for n in as_list(rest("alpha?codes=" + ",".join(c["borders"]) + "&fields=name,cca3,ccn3,flags")):
+            flags = n.get("flags") or {}
+            neighbors.append({"name": n["name"]["common"], "ccn3": n.get("ccn3"), "flag": flags.get("svg") or flags.get("png")})
     cur = []
     for v in (c.get("currencies") or {}).values():
         cur.append(f'{v.get("name")} ({v["symbol"]})' if v.get("symbol") else v.get("name"))
+    flags = c.get("flags") or {}
     return {
         "name": c["name"]["common"], "official": c["name"].get("official", ""), "cca3": c["cca3"], "ccn3": c.get("ccn3"),
         "capital": ", ".join(c.get("capital") or []), "region": c.get("region", ""), "subregion": c.get("subregion", ""),
         "population": c.get("population"), "area": c.get("area"),
         "languages": list((c.get("languages") or {}).values()), "currencies": cur,
-        "flag": (c.get("flags") or {}).get("svg") or (c.get("flags") or {}).get("png"),
+        "flag": flags.get("svg") or flags.get("png"),
         "landlocked": c.get("landlocked"), "timezones": (c.get("timezones") or [])[:3],
         "latlng": c.get("latlng"), "neighbors": neighbors,
     }
 
 
-def build_country(state):
-    """Returns (country dict or None). Updates state['countries_done'] on success."""
+def former_members(former):
+    """Turn Claude's list of ISO3 codes into the numeric ids the map uses. Returns None if it cannot."""
     try:
-        code, codes, done = pick_country(state)
-        facts = country_facts(code)
+        if not isinstance(former, dict) or not former.get("members"):
+            return None
+        rows = as_list(rest("alpha?codes=" + ",".join(str(m) for m in former["members"][:20]) + "&fields=cca3,ccn3"))
+        ids = [r["ccn3"] for r in rows if isinstance(r, dict) and r.get("ccn3")]
+        if len(ids) < 2:
+            return None
+        return {"name": former.get("name", ""), "years": former.get("years", ""), "note": former.get("note", ""), "ccn3": ids}
+    except Exception as ex:
+        log("former-state map skipped:", ex)
+        return None
+
+
+def build_country(state):
+    """Returns (country dict or None, error text or None). Updates state['countries_done'] on success."""
+    try:
+        done = list(state.get("countries_done", []))
+        pool = COUNTRY_CODES[:]
+        random.Random(42).shuffle(pool)
+        left = [c for c in pool if c not in done]
+        if not left:
+            done, left = [], pool
+        facts = None
+        for code in left[:3]:
+            try:
+                facts = country_facts(code)
+                break
+            except urllib.error.HTTPError as ex:
+                if ex.code != 404:
+                    raise
+                log("unknown country code, skipping:", code)
+                done.append(code)
+        if not facts:
+            raise RuntimeError("no country could be loaded")
         ai = claude_json(COUNTRY_SYSTEM, {"country": facts["name"], "official": facts["official"], "region": facts["region"],
                                           "subregion": facts["subregion"], "capital": facts["capital"],
                                           "neighbors": [n["name"] for n in facts["neighbors"]]}, max_tokens=3500)
-        former = ai.get("former")
-        if isinstance(former, dict) and former.get("members"):
-            ids = [codes[m] for m in former["members"] if m in codes]
-            former = {"name": former.get("name", ""), "years": former.get("years", ""), "note": former.get("note", ""), "ccn3": ids} if len(ids) >= 2 else None
-        else:
-            former = None
         facts.update({k: ai.get(k) for k in ("summary", "geography", "origins", "timeline", "recent", "famous", "facts")})
-        facts["former"] = former
-        state["countries_done"] = done + [code]
-        return facts
+        facts["former"] = former_members(ai.get("former"))
+        state["countries_done"] = done + [facts["cca3"]]
+        return facts, None
     except Exception as ex:
-        log("country failed:", ex)
-        return None
+        log("country failed:", repr(ex))
+        return None, f"{type(ex).__name__}: {ex}"[:200]
 
 
 # --------------------------------------------------------------------- state
@@ -367,7 +411,7 @@ def demo_country():
 def main():
     state = load_state()
     stocks, indices, groups, ai = demo_data() if DEMO else live_data(state)
-    country = demo_country() if DEMO else build_country(state)
+    country, country_error = (demo_country(), None) if DEMO else build_country(state)
 
     data = {
         "name": CFG["name"],
@@ -396,6 +440,7 @@ def main():
         "business": ai.get("business"),
         "sales": ai.get("sales"),
         "country": country,
+        "country_error": country_error,
     }
 
     payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/").replace("<!--", "<\\!--")

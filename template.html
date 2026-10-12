@@ -339,7 +339,9 @@ function renderCountry(C){
   <p class="note">Population, area, currency, and flag come from the REST Countries service. Maps show today's borders.</p>`;
   drawMaps(C);
 }
-if(D.country)renderCountry(D.country);else hideSec("country");
+if(D.country)renderCountry(D.country);
+else if(D.country_error)$("countryCard").innerHTML='<p><b>The country lesson is unavailable today.</b></p><p class="note">'+e(D.country_error)+'</p>';
+else hideSec("country");
 
 $("foot").textContent="Updated "+D.generated+". Built automatically each morning.";
 </script>
