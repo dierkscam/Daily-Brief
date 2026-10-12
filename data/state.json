@@ -5,43 +5,49 @@
    "Loss Aversion",
    "Anchoring Bias",
    "Sunk Cost Fallacy",
-   "Availability Heuristic"
+   "Availability Heuristic",
+   "The Dunning-Kruger Effect"
   ],
   "vocab": [
    "Equanimity",
    "Salient",
    "Cogent",
    "Pragmatic",
-   "Mitigate"
+   "Mitigate",
+   "Resilient"
   ],
   "finance": [
    "Compound Growth",
    "Nominal vs. Real Returns",
    "Diversification and Correlation",
    "Risk and Return",
-   "Index Funds and Expense Ratios"
+   "Index Funds and Expense Ratios",
+   "Asset Allocation"
   ],
   "business": [
    "Value Proposition",
    "Customer Segmentation",
    "Unit Economics",
    "Gross Margin",
-   "Customer Acquisition Cost (CAC)"
+   "Customer Acquisition Cost (CAC)",
+   "Contribution Margin"
   ],
   "mental_model": [
    "Second-Order Thinking",
    "Inversion",
    "Circle of Competence",
    "Margin of Safety",
-   "Opportunity Cost"
+   "Opportunity Cost",
+   "Map vs. Territory"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
-   "Active Listening and Paraphrasing"
+   "Active Listening and Paraphrasing",
+   "Handling Objections with Acknowledge and Clarify"
   ]
  },
  "last_vocab": {
-  "word": "Mitigate",
-  "def": "To make something less severe, harmful, or painful, without necessarily removing it entirely."
+  "word": "Resilient",
+  "def": "Able to recover quickly from difficulty, or to withstand pressure without breaking."
  }
 }
