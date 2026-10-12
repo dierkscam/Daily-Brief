@@ -4,38 +4,44 @@
    "Confirmation Bias",
    "Loss Aversion",
    "Anchoring Bias",
-   "Sunk Cost Fallacy"
+   "Sunk Cost Fallacy",
+   "Availability Heuristic"
   ],
   "vocab": [
    "Equanimity",
    "Salient",
    "Cogent",
-   "Pragmatic"
+   "Pragmatic",
+   "Mitigate"
   ],
   "finance": [
    "Compound Growth",
    "Nominal vs. Real Returns",
    "Diversification and Correlation",
-   "Risk and Return"
+   "Risk and Return",
+   "Index Funds and Expense Ratios"
   ],
   "business": [
    "Value Proposition",
    "Customer Segmentation",
    "Unit Economics",
-   "Gross Margin"
+   "Gross Margin",
+   "Customer Acquisition Cost (CAC)"
   ],
   "mental_model": [
    "Second-Order Thinking",
    "Inversion",
    "Circle of Competence",
-   "Margin of Safety"
+   "Margin of Safety",
+   "Opportunity Cost"
   ],
   "sales": [
-   "Open-Ended Discovery Questions"
+   "Open-Ended Discovery Questions",
+   "Active Listening and Paraphrasing"
   ]
  },
  "last_vocab": {
-  "word": "Pragmatic",
-  "def": "Dealing with things in a practical, realistic way rather than relying on theory or ideals."
+  "word": "Mitigate",
+  "def": "To make something less severe, harmful, or painful, without necessarily removing it entirely."
  }
 }
