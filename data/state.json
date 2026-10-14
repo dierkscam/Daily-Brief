@@ -7,7 +7,8 @@
    "Sunk Cost Fallacy",
    "Availability Heuristic",
    "The Dunning-Kruger Effect",
-   "Hindsight Bias"
+   "Hindsight Bias",
+   "Survivorship Bias"
   ],
   "vocab": [
    "Equanimity",
@@ -16,7 +17,8 @@
    "Pragmatic",
    "Mitigate",
    "Resilient",
-   "Nuance"
+   "Nuance",
+   "Discern"
   ],
   "finance": [
    "Compound Growth",
@@ -25,7 +27,8 @@
    "Risk and Return",
    "Index Funds and Expense Ratios",
    "Asset Allocation",
-   "Volatility and Drawdowns"
+   "Volatility and Drawdowns",
+   "Rebalancing"
   ],
   "business": [
    "Value Proposition",
@@ -34,7 +37,8 @@
    "Gross Margin",
    "Customer Acquisition Cost (CAC)",
    "Contribution Margin",
-   "Fixed vs. Variable Costs"
+   "Fixed vs. Variable Costs",
+   "Break-Even Analysis"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -43,17 +47,19 @@
    "Margin of Safety",
    "Opportunity Cost",
    "Map vs. Territory",
-   "Base Rates"
+   "Base Rates",
+   "The Pareto Principle (80/20)"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
    "Active Listening and Paraphrasing",
    "Handling Objections with Acknowledge and Clarify",
-   "Isolating the Objection"
+   "Isolating the Objection",
+   "The Trial Close"
   ]
  },
  "last_vocab": {
-  "word": "Nuance",
-  "def": "A subtle difference in meaning, tone, or expression that is easy to miss but important to understanding."
+  "word": "Discern",
+  "def": "To recognize or tell apart something that is not obvious, especially by careful attention."
  }
 }
