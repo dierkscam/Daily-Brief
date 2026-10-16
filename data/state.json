@@ -8,7 +8,8 @@
    "Availability Heuristic",
    "The Dunning-Kruger Effect",
    "Hindsight Bias",
-   "Survivorship Bias"
+   "Survivorship Bias",
+   "The Framing Effect"
   ],
   "vocab": [
    "Equanimity",
@@ -18,7 +19,8 @@
    "Mitigate",
    "Resilient",
    "Nuance",
-   "Discern"
+   "Discern",
+   "Tenable"
   ],
   "finance": [
    "Compound Growth",
@@ -28,7 +30,8 @@
    "Index Funds and Expense Ratios",
    "Asset Allocation",
    "Volatility and Drawdowns",
-   "Rebalancing"
+   "Rebalancing",
+   "Interest Rates and Asset Prices"
   ],
   "business": [
    "Value Proposition",
@@ -38,7 +41,8 @@
    "Customer Acquisition Cost (CAC)",
    "Contribution Margin",
    "Fixed vs. Variable Costs",
-   "Break-Even Analysis"
+   "Break-Even Analysis",
+   "Cash Flow vs. Profit"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -48,18 +52,20 @@
    "Opportunity Cost",
    "Map vs. Territory",
    "Base Rates",
-   "The Pareto Principle (80/20)"
+   "The Pareto Principle (80/20)",
+   "Feedback Loops"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
    "Active Listening and Paraphrasing",
    "Handling Objections with Acknowledge and Clarify",
    "Isolating the Objection",
-   "The Trial Close"
+   "The Trial Close",
+   "Quantifying the Cost of Inaction"
   ]
  },
  "last_vocab": {
-  "word": "Discern",
-  "def": "To recognize or tell apart something that is not obvious, especially by careful attention."
+  "word": "Tenable",
+  "def": "Able to be defended with evidence or reason; reasonable enough to maintain."
  }
 }
