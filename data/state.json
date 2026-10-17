@@ -9,7 +9,8 @@
    "The Dunning-Kruger Effect",
    "Hindsight Bias",
    "Survivorship Bias",
-   "The Framing Effect"
+   "The Framing Effect",
+   "Recency Bias"
   ],
   "vocab": [
    "Equanimity",
@@ -20,7 +21,8 @@
    "Resilient",
    "Nuance",
    "Discern",
-   "Tenable"
+   "Tenable",
+   "Prudent"
   ],
   "finance": [
    "Compound Growth",
@@ -31,7 +33,8 @@
    "Asset Allocation",
    "Volatility and Drawdowns",
    "Rebalancing",
-   "Interest Rates and Asset Prices"
+   "Interest Rates and Asset Prices",
+   "The Price-to-Earnings (P/E) Ratio"
   ],
   "business": [
    "Value Proposition",
@@ -42,7 +45,8 @@
    "Contribution Margin",
    "Fixed vs. Variable Costs",
    "Break-Even Analysis",
-   "Cash Flow vs. Profit"
+   "Cash Flow vs. Profit",
+   "Operating Leverage"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -53,7 +57,8 @@
    "Map vs. Territory",
    "Base Rates",
    "The Pareto Principle (80/20)",
-   "Feedback Loops"
+   "Feedback Loops",
+   "Chesterton's Fence"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -61,11 +66,12 @@
    "Handling Objections with Acknowledge and Clarify",
    "Isolating the Objection",
    "The Trial Close",
-   "Quantifying the Cost of Inaction"
+   "Quantifying the Cost of Inaction",
+   "Anchoring Price to Value"
   ]
  },
  "last_vocab": {
-  "word": "Tenable",
-  "def": "Able to be defended with evidence or reason; reasonable enough to maintain."
+  "word": "Prudent",
+  "def": "Acting with care and good judgment, especially about the future and about risk."
  }
 }
