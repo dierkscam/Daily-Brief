@@ -10,7 +10,8 @@
    "Hindsight Bias",
    "Survivorship Bias",
    "The Framing Effect",
-   "Recency Bias"
+   "Recency Bias",
+   "The Endowment Effect"
   ],
   "vocab": [
    "Equanimity",
@@ -22,7 +23,8 @@
    "Nuance",
    "Discern",
    "Tenable",
-   "Prudent"
+   "Prudent",
+   "Corroborate"
   ],
   "finance": [
    "Compound Growth",
@@ -34,7 +36,8 @@
    "Volatility and Drawdowns",
    "Rebalancing",
    "Interest Rates and Asset Prices",
-   "The Price-to-Earnings (P/E) Ratio"
+   "The Price-to-Earnings (P/E) Ratio",
+   "Analyst Price Targets"
   ],
   "business": [
    "Value Proposition",
@@ -46,7 +49,8 @@
    "Fixed vs. Variable Costs",
    "Break-Even Analysis",
    "Cash Flow vs. Profit",
-   "Operating Leverage"
+   "Operating Leverage",
+   "Customer Lifetime Value (LTV)"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -58,7 +62,8 @@
    "Base Rates",
    "The Pareto Principle (80/20)",
    "Feedback Loops",
-   "Chesterton's Fence"
+   "Chesterton's Fence",
+   "Regression to the Mean"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -67,11 +72,12 @@
    "Isolating the Objection",
    "The Trial Close",
    "Quantifying the Cost of Inaction",
-   "Anchoring Price to Value"
+   "Anchoring Price to Value",
+   "Strategic Silence"
   ]
  },
  "last_vocab": {
-  "word": "Prudent",
-  "def": "Acting with care and good judgment, especially about the future and about risk."
+  "word": "Corroborate",
+  "def": "To confirm or support a statement or finding with additional evidence."
  }
 }
