@@ -11,7 +11,8 @@
    "Survivorship Bias",
    "The Framing Effect",
    "Recency Bias",
-   "The Endowment Effect"
+   "The Endowment Effect",
+   "Herd Behavior"
   ],
   "vocab": [
    "Equanimity",
@@ -24,7 +25,8 @@
    "Discern",
    "Tenable",
    "Prudent",
-   "Corroborate"
+   "Corroborate",
+   "Fortitude"
   ],
   "finance": [
    "Compound Growth",
@@ -37,7 +39,8 @@
    "Rebalancing",
    "Interest Rates and Asset Prices",
    "The Price-to-Earnings (P/E) Ratio",
-   "Analyst Price Targets"
+   "Analyst Price Targets",
+   "Beta and Market Risk"
   ],
   "business": [
    "Value Proposition",
@@ -50,7 +53,8 @@
    "Break-Even Analysis",
    "Cash Flow vs. Profit",
    "Operating Leverage",
-   "Customer Lifetime Value (LTV)"
+   "Customer Lifetime Value (LTV)",
+   "Churn and Retention"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -63,7 +67,8 @@
    "The Pareto Principle (80/20)",
    "Feedback Loops",
    "Chesterton's Fence",
-   "Regression to the Mean"
+   "Regression to the Mean",
+   "Occam's Razor"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -73,11 +78,12 @@
    "The Trial Close",
    "Quantifying the Cost of Inaction",
    "Anchoring Price to Value",
-   "Strategic Silence"
+   "Strategic Silence",
+   "Mirroring"
   ]
  },
  "last_vocab": {
-  "word": "Corroborate",
-  "def": "To confirm or support a statement or finding with additional evidence."
+  "word": "Fortitude",
+  "def": "Strength of mind that allows a person to face difficulty or pain with courage and steadiness."
  }
 }
