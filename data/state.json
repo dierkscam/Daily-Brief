@@ -12,7 +12,8 @@
    "The Framing Effect",
    "Recency Bias",
    "The Endowment Effect",
-   "Herd Behavior"
+   "Herd Behavior",
+   "The Spotlight Effect"
   ],
   "vocab": [
    "Equanimity",
@@ -26,7 +27,8 @@
    "Tenable",
    "Prudent",
    "Corroborate",
-   "Fortitude"
+   "Fortitude",
+   "Meticulous"
   ],
   "finance": [
    "Compound Growth",
@@ -40,7 +42,8 @@
    "Interest Rates and Asset Prices",
    "The Price-to-Earnings (P/E) Ratio",
    "Analyst Price Targets",
-   "Beta and Market Risk"
+   "Beta and Market Risk",
+   "Inflation and Purchasing Power"
   ],
   "business": [
    "Value Proposition",
@@ -54,7 +57,8 @@
    "Cash Flow vs. Profit",
    "Operating Leverage",
    "Customer Lifetime Value (LTV)",
-   "Churn and Retention"
+   "Churn and Retention",
+   "Pricing Power"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -68,7 +72,8 @@
    "Feedback Loops",
    "Chesterton's Fence",
    "Regression to the Mean",
-   "Occam's Razor"
+   "Occam's Razor",
+   "Hanlon's Razor"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -79,11 +84,12 @@
    "Quantifying the Cost of Inaction",
    "Anchoring Price to Value",
    "Strategic Silence",
-   "Mirroring"
+   "Mirroring",
+   "Social Proof"
   ]
  },
  "last_vocab": {
-  "word": "Fortitude",
-  "def": "Strength of mind that allows a person to face difficulty or pain with courage and steadiness."
+  "word": "Meticulous",
+  "def": "Showing great attention to detail; very careful and precise."
  }
 }
