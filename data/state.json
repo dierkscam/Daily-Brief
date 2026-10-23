@@ -13,7 +13,8 @@
    "Recency Bias",
    "The Endowment Effect",
    "Herd Behavior",
-   "The Spotlight Effect"
+   "The Spotlight Effect",
+   "The Gambler's Fallacy"
   ],
   "vocab": [
    "Equanimity",
@@ -28,7 +29,8 @@
    "Prudent",
    "Corroborate",
    "Fortitude",
-   "Meticulous"
+   "Meticulous",
+   "Capitulate"
   ],
   "finance": [
    "Compound Growth",
@@ -43,7 +45,8 @@
    "The Price-to-Earnings (P/E) Ratio",
    "Analyst Price Targets",
    "Beta and Market Risk",
-   "Inflation and Purchasing Power"
+   "Inflation and Purchasing Power",
+   "Concentration Risk"
   ],
   "business": [
    "Value Proposition",
@@ -58,7 +61,8 @@
    "Operating Leverage",
    "Customer Lifetime Value (LTV)",
    "Churn and Retention",
-   "Pricing Power"
+   "Pricing Power",
+   "Supply Chain Dependency"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -73,7 +77,8 @@
    "Chesterton's Fence",
    "Regression to the Mean",
    "Occam's Razor",
-   "Hanlon's Razor"
+   "Hanlon's Razor",
+   "Signal vs. Noise"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -85,11 +90,12 @@
    "Anchoring Price to Value",
    "Strategic Silence",
    "Mirroring",
-   "Social Proof"
+   "Social Proof",
+   "The Assumptive Close"
   ]
  },
  "last_vocab": {
-  "word": "Meticulous",
-  "def": "Showing great attention to detail; very careful and precise."
+  "word": "Capitulate",
+  "def": "To stop resisting and give in, often after sustained pressure."
  }
 }
