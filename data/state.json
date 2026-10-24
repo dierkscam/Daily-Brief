@@ -14,7 +14,8 @@
    "The Endowment Effect",
    "Herd Behavior",
    "The Spotlight Effect",
-   "The Gambler's Fallacy"
+   "The Gambler's Fallacy",
+   "The Illusion of Control"
   ],
   "vocab": [
    "Equanimity",
@@ -30,7 +31,8 @@
    "Corroborate",
    "Fortitude",
    "Meticulous",
-   "Capitulate"
+   "Capitulate",
+   "Ameliorate"
   ],
   "finance": [
    "Compound Growth",
@@ -46,7 +48,8 @@
    "Analyst Price Targets",
    "Beta and Market Risk",
    "Inflation and Purchasing Power",
-   "Concentration Risk"
+   "Concentration Risk",
+   "Dollar-Cost Averaging"
   ],
   "business": [
    "Value Proposition",
@@ -62,7 +65,8 @@
    "Customer Lifetime Value (LTV)",
    "Churn and Retention",
    "Pricing Power",
-   "Supply Chain Dependency"
+   "Supply Chain Dependency",
+   "Minimum Viable Product (MVP)"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -78,7 +82,8 @@
    "Regression to the Mean",
    "Occam's Razor",
    "Hanlon's Razor",
-   "Signal vs. Noise"
+   "Signal vs. Noise",
+   "Leverage"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -91,11 +96,12 @@
    "Strategic Silence",
    "Mirroring",
    "Social Proof",
-   "The Assumptive Close"
+   "The Assumptive Close",
+   "The Feel-Felt-Found Method"
   ]
  },
  "last_vocab": {
-  "word": "Capitulate",
-  "def": "To stop resisting and give in, often after sustained pressure."
+  "word": "Ameliorate",
+  "def": "To make a bad or difficult situation better."
  }
 }
