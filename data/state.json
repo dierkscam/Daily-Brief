@@ -15,7 +15,8 @@
    "Herd Behavior",
    "The Spotlight Effect",
    "The Gambler's Fallacy",
-   "The Illusion of Control"
+   "The Illusion of Control",
+   "The Zeigarnik Effect"
   ],
   "vocab": [
    "Equanimity",
@@ -32,7 +33,8 @@
    "Fortitude",
    "Meticulous",
    "Capitulate",
-   "Ameliorate"
+   "Ameliorate",
+   "Quell"
   ],
   "finance": [
    "Compound Growth",
@@ -49,7 +51,8 @@
    "Beta and Market Risk",
    "Inflation and Purchasing Power",
    "Concentration Risk",
-   "Dollar-Cost Averaging"
+   "Dollar-Cost Averaging",
+   "Liquidity and the Emergency Fund"
   ],
   "business": [
    "Value Proposition",
@@ -66,7 +69,8 @@
    "Churn and Retention",
    "Pricing Power",
    "Supply Chain Dependency",
-   "Minimum Viable Product (MVP)"
+   "Minimum Viable Product (MVP)",
+   "Competitive Moat"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -83,7 +87,8 @@
    "Occam's Razor",
    "Hanlon's Razor",
    "Signal vs. Noise",
-   "Leverage"
+   "Leverage",
+   "Parkinson's Law"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -97,11 +102,12 @@
    "Mirroring",
    "Social Proof",
    "The Assumptive Close",
-   "The Feel-Felt-Found Method"
+   "The Feel-Felt-Found Method",
+   "Pain Point Stacking"
   ]
  },
  "last_vocab": {
-  "word": "Ameliorate",
-  "def": "To make a bad or difficult situation better."
+  "word": "Quell",
+  "def": "To calm, reduce, or put an end to something, especially fear, doubt, or unrest."
  }
 }
