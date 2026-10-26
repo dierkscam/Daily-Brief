@@ -16,7 +16,8 @@
    "The Spotlight Effect",
    "The Gambler's Fallacy",
    "The Illusion of Control",
-   "The Zeigarnik Effect"
+   "The Zeigarnik Effect",
+   "The Planning Fallacy"
   ],
   "vocab": [
    "Equanimity",
@@ -34,7 +35,8 @@
    "Meticulous",
    "Capitulate",
    "Ameliorate",
-   "Quell"
+   "Quell",
+   "Scrutinize"
   ],
   "finance": [
    "Compound Growth",
@@ -52,7 +54,8 @@
    "Inflation and Purchasing Power",
    "Concentration Risk",
    "Dollar-Cost Averaging",
-   "Liquidity and the Emergency Fund"
+   "Liquidity and the Emergency Fund",
+   "Commodity Prices and Inflation"
   ],
   "business": [
    "Value Proposition",
@@ -70,7 +73,8 @@
    "Pricing Power",
    "Supply Chain Dependency",
    "Minimum Viable Product (MVP)",
-   "Competitive Moat"
+   "Competitive Moat",
+   "Product Roadmaps and Timeline Risk"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -88,7 +92,8 @@
    "Hanlon's Razor",
    "Signal vs. Noise",
    "Leverage",
-   "Parkinson's Law"
+   "Parkinson's Law",
+   "The Planning Buffer (Hofstadter's Law)"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -103,11 +108,12 @@
    "Social Proof",
    "The Assumptive Close",
    "The Feel-Felt-Found Method",
-   "Pain Point Stacking"
+   "Pain Point Stacking",
+   "The Summary Close"
   ]
  },
  "last_vocab": {
-  "word": "Quell",
-  "def": "To calm, reduce, or put an end to something, especially fear, doubt, or unrest."
+  "word": "Scrutinize",
+  "def": "To examine something closely and carefully, looking for details or flaws."
  }
 }
