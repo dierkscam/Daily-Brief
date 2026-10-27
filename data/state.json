@@ -17,7 +17,8 @@
    "The Gambler's Fallacy",
    "The Illusion of Control",
    "The Zeigarnik Effect",
-   "The Planning Fallacy"
+   "The Planning Fallacy",
+   "Choice Overload"
   ],
   "vocab": [
    "Equanimity",
@@ -36,7 +37,8 @@
    "Capitulate",
    "Ameliorate",
    "Quell",
-   "Scrutinize"
+   "Scrutinize",
+   "Judicious"
   ],
   "finance": [
    "Compound Growth",
@@ -55,7 +57,8 @@
    "Concentration Risk",
    "Dollar-Cost Averaging",
    "Liquidity and the Emergency Fund",
-   "Commodity Prices and Inflation"
+   "Commodity Prices and Inflation",
+   "Market Capitalization and Small-Cap Risk"
   ],
   "business": [
    "Value Proposition",
@@ -74,7 +77,8 @@
    "Supply Chain Dependency",
    "Minimum Viable Product (MVP)",
    "Competitive Moat",
-   "Product Roadmaps and Timeline Risk"
+   "Product Roadmaps and Timeline Risk",
+   "Product-Market Fit"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -93,7 +97,8 @@
    "Signal vs. Noise",
    "Leverage",
    "Parkinson's Law",
-   "The Planning Buffer (Hofstadter's Law)"
+   "The Planning Buffer (Hofstadter's Law)",
+   "Diminishing Returns"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -109,11 +114,12 @@
    "The Assumptive Close",
    "The Feel-Felt-Found Method",
    "Pain Point Stacking",
-   "The Summary Close"
+   "The Summary Close",
+   "The Follow-Up with Value"
   ]
  },
  "last_vocab": {
-  "word": "Scrutinize",
-  "def": "To examine something closely and carefully, looking for details or flaws."
+  "word": "Judicious",
+  "def": "Showing good judgment and careful thought, especially in deciding what to do or how much to do."
  }
 }
