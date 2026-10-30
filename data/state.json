@@ -18,7 +18,8 @@
    "The Illusion of Control",
    "The Zeigarnik Effect",
    "The Planning Fallacy",
-   "Choice Overload"
+   "Choice Overload",
+   "Cognitive Dissonance"
   ],
   "vocab": [
    "Equanimity",
@@ -38,7 +39,8 @@
    "Ameliorate",
    "Quell",
    "Scrutinize",
-   "Judicious"
+   "Judicious",
+   "Sanguine"
   ],
   "finance": [
    "Compound Growth",
@@ -58,7 +60,8 @@
    "Dollar-Cost Averaging",
    "Liquidity and the Emergency Fund",
    "Commodity Prices and Inflation",
-   "Market Capitalization and Small-Cap Risk"
+   "Market Capitalization and Small-Cap Risk",
+   "Expectations vs. Results (What Is Priced In)"
   ],
   "business": [
    "Value Proposition",
@@ -78,7 +81,8 @@
    "Minimum Viable Product (MVP)",
    "Competitive Moat",
    "Product Roadmaps and Timeline Risk",
-   "Product-Market Fit"
+   "Product-Market Fit",
+   "Build vs. Buy"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -98,7 +102,8 @@
    "Leverage",
    "Parkinson's Law",
    "The Planning Buffer (Hofstadter's Law)",
-   "Diminishing Returns"
+   "Diminishing Returns",
+   "The Theory of Constraints"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -115,11 +120,12 @@
    "The Feel-Felt-Found Method",
    "Pain Point Stacking",
    "The Summary Close",
-   "The Follow-Up with Value"
+   "The Follow-Up with Value",
+   "The Mutual Action Plan"
   ]
  },
  "last_vocab": {
-  "word": "Judicious",
-  "def": "Showing good judgment and careful thought, especially in deciding what to do or how much to do."
+  "word": "Sanguine",
+  "def": "Optimistic and confident, especially when the situation is uncertain or difficult."
  }
 }
