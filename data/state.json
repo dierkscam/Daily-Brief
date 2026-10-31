@@ -19,7 +19,8 @@
    "The Zeigarnik Effect",
    "The Planning Fallacy",
    "Choice Overload",
-   "Cognitive Dissonance"
+   "Cognitive Dissonance",
+   "Negativity Bias"
   ],
   "vocab": [
    "Equanimity",
@@ -40,7 +41,8 @@
    "Quell",
    "Scrutinize",
    "Judicious",
-   "Sanguine"
+   "Sanguine",
+   "Astute"
   ],
   "finance": [
    "Compound Growth",
@@ -61,7 +63,8 @@
    "Liquidity and the Emergency Fund",
    "Commodity Prices and Inflation",
    "Market Capitalization and Small-Cap Risk",
-   "Expectations vs. Results (What Is Priced In)"
+   "Expectations vs. Results (What Is Priced In)",
+   "Sector Rotation and Defensive Stocks"
   ],
   "business": [
    "Value Proposition",
@@ -82,7 +85,8 @@
    "Competitive Moat",
    "Product Roadmaps and Timeline Risk",
    "Product-Market Fit",
-   "Build vs. Buy"
+   "Build vs. Buy",
+   "Switching Costs"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -103,7 +107,8 @@
    "Parkinson's Law",
    "The Planning Buffer (Hofstadter's Law)",
    "Diminishing Returns",
-   "The Theory of Constraints"
+   "The Theory of Constraints",
+   "The Lindy Effect"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -121,11 +126,12 @@
    "Pain Point Stacking",
    "The Summary Close",
    "The Follow-Up with Value",
-   "The Mutual Action Plan"
+   "The Mutual Action Plan",
+   "Multi-Threading a Deal"
   ]
  },
  "last_vocab": {
-  "word": "Sanguine",
-  "def": "Optimistic and confident, especially when the situation is uncertain or difficult."
+  "word": "Astute",
+  "def": "Quick to notice and understand things, especially in a way that gives an advantage; shrewd."
  }
 }
