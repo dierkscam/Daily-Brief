@@ -20,7 +20,8 @@
    "The Planning Fallacy",
    "Choice Overload",
    "Cognitive Dissonance",
-   "Negativity Bias"
+   "Negativity Bias",
+   "The Ostrich Effect"
   ],
   "vocab": [
    "Equanimity",
@@ -42,7 +43,8 @@
    "Scrutinize",
    "Judicious",
    "Sanguine",
-   "Astute"
+   "Astute",
+   "Circumspect"
   ],
   "finance": [
    "Compound Growth",
@@ -64,7 +66,8 @@
    "Commodity Prices and Inflation",
    "Market Capitalization and Small-Cap Risk",
    "Expectations vs. Results (What Is Priced In)",
-   "Sector Rotation and Defensive Stocks"
+   "Sector Rotation and Defensive Stocks",
+   "Hedging"
   ],
   "business": [
    "Value Proposition",
@@ -86,7 +89,8 @@
    "Product Roadmaps and Timeline Risk",
    "Product-Market Fit",
    "Build vs. Buy",
-   "Switching Costs"
+   "Switching Costs",
+   "Customer Concentration Risk"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -108,7 +112,8 @@
    "The Planning Buffer (Hofstadter's Law)",
    "Diminishing Returns",
    "The Theory of Constraints",
-   "The Lindy Effect"
+   "The Lindy Effect",
+   "Precommitment"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -127,11 +132,12 @@
    "The Summary Close",
    "The Follow-Up with Value",
    "The Mutual Action Plan",
-   "Multi-Threading a Deal"
+   "Multi-Threading a Deal",
+   "Trading Concessions (If/Then Negotiating)"
   ]
  },
  "last_vocab": {
-  "word": "Astute",
-  "def": "Quick to notice and understand things, especially in a way that gives an advantage; shrewd."
+  "word": "Circumspect",
+  "def": "Careful to consider all circumstances and possible consequences before acting; cautious and watchful."
  }
 }
