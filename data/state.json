@@ -21,7 +21,8 @@
    "Choice Overload",
    "Cognitive Dissonance",
    "Negativity Bias",
-   "The Ostrich Effect"
+   "The Ostrich Effect",
+   "The Narrative Fallacy"
   ],
   "vocab": [
    "Equanimity",
@@ -44,7 +45,8 @@
    "Judicious",
    "Sanguine",
    "Astute",
-   "Circumspect"
+   "Circumspect",
+   "Tenacious"
   ],
   "finance": [
    "Compound Growth",
@@ -67,7 +69,8 @@
    "Market Capitalization and Small-Cap Risk",
    "Expectations vs. Results (What Is Priced In)",
    "Sector Rotation and Defensive Stocks",
-   "Hedging"
+   "Hedging",
+   "Free Cash Flow"
   ],
   "business": [
    "Value Proposition",
@@ -90,7 +93,8 @@
    "Product-Market Fit",
    "Build vs. Buy",
    "Switching Costs",
-   "Customer Concentration Risk"
+   "Customer Concentration Risk",
+   "Capital Intensity"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -113,7 +117,8 @@
    "Diminishing Returns",
    "The Theory of Constraints",
    "The Lindy Effect",
-   "Precommitment"
+   "Precommitment",
+   "Goodhart's Law"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -133,11 +138,12 @@
    "The Follow-Up with Value",
    "The Mutual Action Plan",
    "Multi-Threading a Deal",
-   "Trading Concessions (If/Then Negotiating)"
+   "Trading Concessions (If/Then Negotiating)",
+   "Knowing Your BATNA"
   ]
  },
  "last_vocab": {
-  "word": "Circumspect",
-  "def": "Careful to consider all circumstances and possible consequences before acting; cautious and watchful."
+  "word": "Tenacious",
+  "def": "Holding firmly to a goal or position; persistent and determined, not giving up easily."
  }
 }
