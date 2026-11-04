@@ -22,7 +22,8 @@
    "Cognitive Dissonance",
    "Negativity Bias",
    "The Ostrich Effect",
-   "The Narrative Fallacy"
+   "The Narrative Fallacy",
+   "Overconfidence Bias"
   ],
   "vocab": [
    "Equanimity",
@@ -46,7 +47,8 @@
    "Sanguine",
    "Astute",
    "Circumspect",
-   "Tenacious"
+   "Tenacious",
+   "Incremental"
   ],
   "finance": [
    "Compound Growth",
@@ -70,7 +72,8 @@
    "Expectations vs. Results (What Is Priced In)",
    "Sector Rotation and Defensive Stocks",
    "Hedging",
-   "Free Cash Flow"
+   "Free Cash Flow",
+   "Enterprise Value"
   ],
   "business": [
    "Value Proposition",
@@ -94,7 +97,8 @@
    "Build vs. Buy",
    "Switching Costs",
    "Customer Concentration Risk",
-   "Capital Intensity"
+   "Capital Intensity",
+   "Economies of Scale"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -118,7 +122,8 @@
    "The Theory of Constraints",
    "The Lindy Effect",
    "Precommitment",
-   "Goodhart's Law"
+   "Goodhart's Law",
+   "Optionality"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -139,11 +144,12 @@
    "The Mutual Action Plan",
    "Multi-Threading a Deal",
    "Trading Concessions (If/Then Negotiating)",
-   "Knowing Your BATNA"
+   "Knowing Your BATNA",
+   "Reframing with a Commercial Insight"
   ]
  },
  "last_vocab": {
-  "word": "Tenacious",
-  "def": "Holding firmly to a goal or position; persistent and determined, not giving up easily."
+  "word": "Incremental",
+  "def": "Increasing or progressing in small, steady steps rather than all at once."
  }
 }
