@@ -23,7 +23,8 @@
    "Negativity Bias",
    "The Ostrich Effect",
    "The Narrative Fallacy",
-   "Overconfidence Bias"
+   "Overconfidence Bias",
+   "Status Quo Bias"
   ],
   "vocab": [
    "Equanimity",
@@ -48,7 +49,8 @@
    "Astute",
    "Circumspect",
    "Tenacious",
-   "Incremental"
+   "Incremental",
+   "Lucid"
   ],
   "finance": [
    "Compound Growth",
@@ -73,7 +75,8 @@
    "Sector Rotation and Defensive Stocks",
    "Hedging",
    "Free Cash Flow",
-   "Enterprise Value"
+   "Enterprise Value",
+   "Price-to-Sales (P/S) Ratio"
   ],
   "business": [
    "Value Proposition",
@@ -98,7 +101,8 @@
    "Switching Costs",
    "Customer Concentration Risk",
    "Capital Intensity",
-   "Economies of Scale"
+   "Economies of Scale",
+   "Network Effects"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -123,7 +127,8 @@
    "The Lindy Effect",
    "Precommitment",
    "Goodhart's Law",
-   "Optionality"
+   "Optionality",
+   "The Pre-Mortem"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -145,11 +150,12 @@
    "Multi-Threading a Deal",
    "Trading Concessions (If/Then Negotiating)",
    "Knowing Your BATNA",
-   "Reframing with a Commercial Insight"
+   "Reframing with a Commercial Insight",
+   "Building an Internal Champion"
   ]
  },
  "last_vocab": {
-  "word": "Incremental",
-  "def": "Increasing or progressing in small, steady steps rather than all at once."
+  "word": "Lucid",
+  "def": "Clearly expressed and easy to understand; also, thinking in a clear, rational way."
  }
 }
