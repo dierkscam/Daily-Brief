@@ -24,7 +24,8 @@
    "The Ostrich Effect",
    "The Narrative Fallacy",
    "Overconfidence Bias",
-   "Status Quo Bias"
+   "Status Quo Bias",
+   "The Halo Effect"
   ],
   "vocab": [
    "Equanimity",
@@ -50,7 +51,8 @@
    "Circumspect",
    "Tenacious",
    "Incremental",
-   "Lucid"
+   "Lucid",
+   "Dispassionate"
   ],
   "finance": [
    "Compound Growth",
@@ -76,7 +78,8 @@
    "Hedging",
    "Free Cash Flow",
    "Enterprise Value",
-   "Price-to-Sales (P/S) Ratio"
+   "Price-to-Sales (P/S) Ratio",
+   "Return on Invested Capital (ROIC)"
   ],
   "business": [
    "Value Proposition",
@@ -102,7 +105,8 @@
    "Customer Concentration Risk",
    "Capital Intensity",
    "Economies of Scale",
-   "Network Effects"
+   "Network Effects",
+   "Vertical Integration"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -128,7 +132,8 @@
    "Precommitment",
    "Goodhart's Law",
    "Optionality",
-   "The Pre-Mortem"
+   "The Pre-Mortem",
+   "Activation Energy"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -151,11 +156,12 @@
    "Trading Concessions (If/Then Negotiating)",
    "Knowing Your BATNA",
    "Reframing with a Commercial Insight",
-   "Building an Internal Champion"
+   "Building an Internal Champion",
+   "Qualifying a Deal (Budget, Authority, Need, Timeline)"
   ]
  },
  "last_vocab": {
-  "word": "Lucid",
-  "def": "Clearly expressed and easy to understand; also, thinking in a clear, rational way."
+  "word": "Dispassionate",
+  "def": "Not influenced by strong emotion, and so able to be rational and impartial."
  }
 }
