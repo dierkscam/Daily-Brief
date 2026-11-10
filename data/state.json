@@ -25,7 +25,8 @@
    "The Narrative Fallacy",
    "Overconfidence Bias",
    "Status Quo Bias",
-   "The Halo Effect"
+   "The Halo Effect",
+   "The Pratfall Effect"
   ],
   "vocab": [
    "Equanimity",
@@ -52,7 +53,8 @@
    "Tenacious",
    "Incremental",
    "Lucid",
-   "Dispassionate"
+   "Dispassionate",
+   "Underscore"
   ],
   "finance": [
    "Compound Growth",
@@ -79,7 +81,8 @@
    "Free Cash Flow",
    "Enterprise Value",
    "Price-to-Sales (P/S) Ratio",
-   "Return on Invested Capital (ROIC)"
+   "Return on Invested Capital (ROIC)",
+   "Operating Margin"
   ],
   "business": [
    "Value Proposition",
@@ -106,7 +109,8 @@
    "Capital Intensity",
    "Economies of Scale",
    "Network Effects",
-   "Vertical Integration"
+   "Vertical Integration",
+   "Working Capital"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -133,7 +137,8 @@
    "Goodhart's Law",
    "Optionality",
    "The Pre-Mortem",
-   "Activation Energy"
+   "Activation Energy",
+   "Survivorship in Your Own Data (Selection Effects)"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -157,11 +162,12 @@
    "Knowing Your BATNA",
    "Reframing with a Commercial Insight",
    "Building an Internal Champion",
-   "Qualifying a Deal (Budget, Authority, Need, Timeline)"
+   "Qualifying a Deal (Budget, Authority, Need, Timeline)",
+   "The Boomerang Question"
   ]
  },
  "last_vocab": {
-  "word": "Dispassionate",
-  "def": "Not influenced by strong emotion, and so able to be rational and impartial."
+  "word": "Underscore",
+  "def": "To emphasize something or show that it is important or true."
  }
 }
