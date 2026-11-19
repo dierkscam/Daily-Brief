@@ -26,7 +26,8 @@
    "Overconfidence Bias",
    "Status Quo Bias",
    "The Halo Effect",
-   "The Pratfall Effect"
+   "The Pratfall Effect",
+   "The Mere-Exposure Effect"
   ],
   "vocab": [
    "Equanimity",
@@ -54,7 +55,8 @@
    "Incremental",
    "Lucid",
    "Dispassionate",
-   "Underscore"
+   "Underscore",
+   "Equivocal"
   ],
   "finance": [
    "Compound Growth",
@@ -82,7 +84,8 @@
    "Enterprise Value",
    "Price-to-Sales (P/S) Ratio",
    "Return on Invested Capital (ROIC)",
-   "Operating Margin"
+   "Operating Margin",
+   "IPO Float and Lock-Up Periods"
   ],
   "business": [
    "Value Proposition",
@@ -110,7 +113,8 @@
    "Economies of Scale",
    "Network Effects",
    "Vertical Integration",
-   "Working Capital"
+   "Working Capital",
+   "Cohort Analysis"
   ],
   "mental_model": [
    "Second-Order Thinking",
@@ -138,7 +142,8 @@
    "Optionality",
    "The Pre-Mortem",
    "Activation Energy",
-   "Survivorship in Your Own Data (Selection Effects)"
+   "Survivorship in Your Own Data (Selection Effects)",
+   "Expected Value"
   ],
   "sales": [
    "Open-Ended Discovery Questions",
@@ -163,11 +168,12 @@
    "Reframing with a Commercial Insight",
    "Building an Internal Champion",
    "Qualifying a Deal (Budget, Authority, Need, Timeline)",
-   "The Boomerang Question"
+   "The Boomerang Question",
+   "The Takeaway Close (Permission to Close the File)"
   ]
  },
  "last_vocab": {
-  "word": "Underscore",
-  "def": "To emphasize something or show that it is important or true."
+  "word": "Equivocal",
+  "def": "Open to more than one interpretation, and therefore unclear or not decisive."
  }
 }
